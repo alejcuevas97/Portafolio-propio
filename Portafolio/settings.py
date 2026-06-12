@@ -101,18 +101,15 @@ WSGI_APPLICATION = 'Portafolio.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
+# Configuración de la base de datos
 DATABASES = {
-    'default': env.db(
-        'DATABASE_URL',
-        default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}"
-    )
+    'default': env.db('DATABASE_URL')
 }
-DATABASES['default']['CONN_MAX_AGE'] = env.int('CONN_MAX_AGE', default=600)
 
-# For cloud providers that require SSL for PostgreSQL connections.
-if env.bool('DATABASE_REQUIRE_SSL', default=False):
-    DATABASES['default'].setdefault('OPTIONS', {})['sslmode'] = 'require'
-    
+# Supabase requiere SSL
+DATABASES['default']['OPTIONS'] = {
+    'sslmode': 'require',
+}
     
 """DATABASES = {
     'default': {
