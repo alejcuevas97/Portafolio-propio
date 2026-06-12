@@ -4,6 +4,9 @@ import environ
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
+from dotenv import load_dotenv
+import psycopg2
+
 
 env = environ.Env()
 env_path = Path(__file__).resolve().parent / '.env'
@@ -102,14 +105,26 @@ WSGI_APPLICATION = 'Portafolio.wsgi.application'
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
 # Configuración de la base de datos
+# Load environment variables from .env
+load_dotenv()
+
+# Fetch variables
 DATABASES = {
-    'default': env.db('DATABASE_URL')
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv("DB_NAME"),
+        'USER': os.getenv("DB_USER"),
+        'PASSWORD': os.getenv("DB_PASSWORD"),
+        'HOST': os.getenv("DB_HOST"),
+        'PORT': os.getenv("DB_PORT"),
+    }
+}
+DATABASES['default']['OPTIONS'] = {
+    'sslmode': 'require'
 }
 
-# Supabase requiere SSL
-DATABASES['default']['OPTIONS'] = {
-    'sslmode': 'require',
-}
+
+
     
 """DATABASES = {
     'default': {
