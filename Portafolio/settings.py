@@ -109,7 +109,7 @@ WSGI_APPLICATION = 'Portafolio.wsgi.application'
 load_dotenv()
 
 # Fetch variables
-DATABASES = {
+"""DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.getenv("DB_NAME"),
@@ -122,8 +122,10 @@ DATABASES = {
 DATABASES['default']['OPTIONS'] = {
     'sslmode': 'require'
 }
+"""
+DATABASE_URL = os.getenv("DATABASE_URL")
 
-
+connection = psycopg2.connect(DATABASE_URL)
 
     
 """DATABASES = {
@@ -202,3 +204,4 @@ cloudinary.config(
 )
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
