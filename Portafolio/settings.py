@@ -6,6 +6,10 @@ import cloudinary.uploader
 import cloudinary.api
 from dotenv import load_dotenv
 import psycopg2
+import dj_database_url
+
+
+
 
 
 env = environ.Env()
@@ -123,10 +127,13 @@ DATABASES['default']['OPTIONS'] = {
     'sslmode': 'require'
 }
 """
-DATABASE_URL = os.getenv("DATABASE_URL")
-
-connection = psycopg2.connect(DATABASE_URL)
-
+DATABASES = {
+    'default': dj_database_url.parse(
+        os.getenv("DATABASE_URL"),
+        conn_max_age=600,
+        ssl_require=True
+    )
+}
     
 """DATABASES = {
     'default': {
