@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CV — Alejandro Cuevas González</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+  :root {
+    --ground: #eceef2; --paper: #fcfcfd; --ink: #1b2029; --strong: #0f131a;
+    --muted: #59616e; --faint: #7b8290; --hairline: #e2e5ea; --accent: #1d5fd0;
+    --shadow: 0 1px 2px rgba(20,28,45,.06), 0 12px 32px -8px rgba(20,28,45,.14);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #0d0e12; --paper: #16181d; --ink: #e6e8ec; --strong: #f4f5f7;
+      --muted: #9aa2ae; --faint: #7c8290; --hairline: #2a2d34; --accent: #74a6ff;
+      --shadow: 0 1px 2px rgba(0,0,0,.4), 0 16px 40px -12px rgba(0,0,0,.55);
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--ground); color: var(--ink);
+    font-family: "IBM Plex Sans", -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-size: 15px; line-height: 1.58; -webkit-font-smoothing: antialiased;
+  }
+  .toolbar {
+    position: sticky; top: 0; z-index: 10;
+    display: flex; justify-content: center; gap: .75rem; align-items: baseline;
+    padding: .85rem 1rem; background: color-mix(in srgb, var(--ground) 88%, transparent);
+    backdrop-filter: blur(6px); border-bottom: 1px solid var(--hairline);
+    font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+    font-size: .74rem; letter-spacing: .04em; color: var(--muted);
+  }
+  .toolbar span { text-transform: uppercase; }
+  .toolbar button {
+    font: inherit; text-transform: uppercase; letter-spacing: .06em;
+    color: var(--paper); background: var(--accent); border: none; border-radius: 5px;
+    padding: .5rem .95rem; cursor: pointer; transition: filter .15s ease;
+  }
+  .toolbar button:hover { filter: brightness(1.08); }
+
+  .sheet {
+    max-width: 47rem; margin: 2.5rem auto 4rem; background: var(--paper);
+    border: 1px solid var(--hairline); border-radius: 4px; box-shadow: var(--shadow);
+    padding: 3.25rem clamp(1.4rem, 5vw, 3.4rem) 3rem;
+  }
+
+  .name {
+    font-family: "Newsreader", Georgia, "Times New Roman", serif; font-weight: 500;
+    font-size: clamp(2.1rem, 5.5vw, 2.9rem); line-height: 1.05; letter-spacing: -.012em;
+    color: var(--strong); margin: 0; text-wrap: balance;
+  }
+  .role { margin: .55rem 0 0; font-size: 1.02rem; color: var(--accent); font-weight: 500; }
+  .contact {
+    margin: 1.15rem 0 0; padding: 0; list-style: none;
+    display: flex; flex-wrap: wrap; gap: .3rem .95rem;
+    font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+    font-size: .78rem; color: var(--muted);
+  }
+  .contact li { display: flex; align-items: center; gap: .95rem; }
+  .contact li::after { content: "·"; color: var(--faint); }
+  .contact li:last-child::after { content: none; }
+  .contact a { color: inherit; text-decoration: none; }
+
+  section { margin-top: 2.1rem; }
+  h2 {
+    font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace; font-weight: 500;
+    font-size: .74rem; letter-spacing: .16em; text-transform: uppercase; color: var(--faint);
+    margin: 0 0 1.1rem; padding-bottom: .5rem; border-bottom: 1px solid var(--hairline);
+  }
+  .summary { margin: 0; max-width: 62ch; }
+
+  .entry { margin-bottom: 1.5rem; break-inside: avoid; }
+  .entry:last-child { margin-bottom: 0; }
+  .entry-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; flex-wrap: wrap; }
+  .entry-title { font-weight: 600; color: var(--strong); }
+  .entry-org { color: var(--muted); font-weight: 400; }
+  .entry-date {
+    font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace; font-size: .76rem;
+    color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums;
+  }
+  .entry ul { margin: .5rem 0 0; padding: 0; list-style: none; }
+  .entry li { position: relative; padding-left: 1.1rem; margin-top: .32rem; }
+  .entry li::before {
+    content: ""; position: absolute; left: 0; top: .62em;
+    width: 5px; height: 5px; border-radius: 50%; background: var(--accent);
+  }
+
+  .projects { display: grid; gap: 1.15rem; }
+  .project { break-inside: avoid; }
+  .project h3 { margin: 0 0 .15rem; font-size: .96rem; font-weight: 600; color: var(--strong); }
+  .project h3 a { color: var(--accent); text-decoration: none; font-family: "IBM Plex Mono", monospace; font-size: .8rem; font-weight: 400; }
+  .project p { margin: 0; color: var(--muted); max-width: 70ch; }
+
+  .skills { display: grid; gap: .55rem; }
+  .skill-row { display: grid; grid-template-columns: 10.5rem 1fr; gap: .4rem 1.1rem; align-items: baseline; }
+  .skill-row dt {
+    font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace; font-size: .72rem;
+    letter-spacing: .04em; text-transform: uppercase; color: var(--faint); padding-top: .1rem;
+  }
+  .skill-row dd { margin: 0; }
+
+  .meta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6rem; }
+  .meta-grid p { margin: .2rem 0 0; }
+  .meta-grid .sub { color: var(--muted); font-size: .88rem; }
+  .certs { margin: 0; padding: 0; list-style: none; }
+  .certs li { position: relative; padding-left: 1.1rem; margin-top: .3rem; }
+  .certs li::before {
+    content: ""; position: absolute; left: 0; top: .62em;
+    width: 5px; height: 5px; border-radius: 50%; background: var(--accent);
+  }
+
+  @media (max-width: 34rem) {
+    .skill-row { grid-template-columns: 1fr; gap: .1rem; }
+    .meta-grid { grid-template-columns: 1fr; gap: 1.1rem; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+  @page { size: A4; margin: 15mm 16mm; }
+  @media print {
+    :root {
+      --ground: #fff; --paper: #fff; --ink: #16181d; --strong: #000;
+      --muted: #40454f; --faint: #5c616b; --hairline: #c9ccd2; --accent: #10469e;
+    }
+    .toolbar { display: none; }
+    body { font-size: 10.3pt; line-height: 1.42; background: #fff; }
+    .sheet { max-width: none; margin: 0; padding: 0; border: none; border-radius: 0; box-shadow: none; }
+    section { margin-top: 15pt; }
+    .entry { margin-bottom: 11pt; }
+    .name { font-size: 22pt; }
+    a { color: inherit !important; text-decoration: none; }
+    h2 { break-after: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <span>Currículum · actualizado ago 2026</span>
+  <button type="button" onclick="window.print()">Imprimir / Guardar como PDF</button>
+</div>
+
+<main class="sheet">
+  <header>
+    <h1 class="name">Alejandro Cuevas González</h1>
+    <p class="role">Full Stack Developer — Python/Django · React</p>
+    <ul class="contact">
+      <li>Trinidad, Cuba</li>
+      <li><a href="tel:+5354910187">+53 54910187</a></li>
+      <li><a href="mailto:alejcuevas97@gmail.com">alejcuevas97@gmail.com</a></li>
+      <li><a href="https://github.com/alejcuevas97">github.com/alejcuevas97</a></li>
+      <li><a href="https://www.linkedin.com/in/alejandro-cuevas-22340b124">linkedin.com/in/alejandro-cuevas</a></li>
+      <li><a href="https://portafolio-propio.onrender.com">portafolio-propio.onrender.com</a></li>
+    </ul>
+  </header>
+
+  <section>
+    <h2>Resumen profesional</h2>
+    <p class="summary">
+      Desarrollador full stack con especialización backend. Diseño APIs REST en Python
+      (Django / Django REST Framework, FastAPI) y construyo las interfaces React que las
+      consumen, optimizando bases de datos relacionales (PostgreSQL, MySQL) y desplegando
+      en la nube con pipelines CI/CD. Hago trabajo backend por contrato, y mi proyecto propio
+      más grande es PatinPay: una plataforma SaaS de venta de entradas, tienda y transmisiones
+      que diseñé y desarrollé en solitario, de cero a producción. Ingeniero Industrial de
+      formación, aporto pensamiento analítico y orientación a procesos. Inglés básico-intermedio
+      (A2–B1) en progreso. Disponible para roles remotos, freelance o contrato.
+    </p>
+  </section>
+
+  <section>
+    <h2>Experiencia profesional</h2>
+
+    <div class="entry">
+      <div class="entry-head">
+        <div class="entry-title">Backend Developer <span class="entry-org">— Freelance / contrato</span></div>
+        <div class="entry-date">2025 – Presente</div>
+      </div>
+      <ul>
+        <li>Diseño y despliegue de APIs RESTful con Django y FastAPI para aplicaciones internas.</li>
+        <li>Optimización de consultas y estructura de bases de datos (PostgreSQL, MySQL): −30 % en el tiempo de respuesta de las consultas más críticas.</li>
+        <li>Automatización de la generación de informes: −40 % de las horas dedicadas manualmente por el equipo.</li>
+        <li>Integración de servicios web internos, mejorando la escalabilidad y confiabilidad del sistema.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <div class="entry-title">Técnico en sistemas eléctricos y electrónicos <span class="entry-org">— Privado</span></div>
+        <div class="entry-date">2015 – 2024</div>
+      </div>
+      <ul>
+        <li>Más de 10 años diagnosticando y reparando equipos electrónicos y eléctricos para clientes residenciales e industriales, desarrollando protocolos sistemáticos de diagnóstico que redujeron el tiempo medio de resolución.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Proyectos destacados</h2>
+    <div class="projects">
+      <div class="project">
+        <h3>PatinPay — proyecto propio <a href="https://patinpay.cl">patinpay.cl</a></h3>
+        <p>
+          Plataforma SaaS full stack de gestión de eventos que diseñé y desarrollé en solitario,
+          de cero a producción: entradas, tienda, rifas, streaming en vivo y control de acceso por QR.
+          Backend Django REST Framework (~70 endpoints, autenticación JWT con roles, documentación
+          OpenAPI/Swagger); frontend React/Vite/PWA (carrito, escáner de QR con cámara, video en vivo
+          con LiveKit, exportación de reportes). Pagos con Transbank Webpay y webhooks; despliegue con
+          API y frontend separados y Cloudflare.
+        </p>
+      </div>
+      <div class="project">
+        <h3>HRMS API — Human Resource Management System</h3>
+        <p>API para gestión de empleados, departamentos, asistencia y nómina. Roles y permisos con JWT/OAuth2, documentación Swagger/OpenAPI y despliegue en la nube con Docker.</p>
+      </div>
+      <div class="project">
+        <h3>Tienda México <a href="https://tienda-mexico.onrender.com/Productos/docs">tienda-mexico.onrender.com</a></h3>
+        <p>API para gestión de usuarios, productos y compras en línea, con integración y despliegue CI/CD.</p>
+      </div>
+      <div class="project">
+        <h3>Portafolio Personal <a href="https://portafolio-propio.onrender.com">portafolio-propio.onrender.com</a></h3>
+        <p>Portafolio web con Django que presenta proyectos y certificaciones, con una API REST propia.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Habilidades técnicas</h2>
+    <dl class="skills">
+      <div class="skill-row"><dt>Backend</dt><dd>Python, Django, Django REST Framework, FastAPI, JWT/OAuth2, OpenAPI/Swagger</dd></div>
+      <div class="skill-row"><dt>Frontend</dt><dd>React, React Router, Tailwind CSS, Vite, PWA, JavaScript</dd></div>
+      <div class="skill-row"><dt>Bases de datos</dt><dd>PostgreSQL, MySQL</dd></div>
+      <div class="skill-row"><dt>Herramientas</dt><dd>Git, GitHub, Docker, GitHub Actions, Postman, Cloudflare</dd></div>
+      <div class="skill-row"><dt>Integraciones</dt><dd>Pasarelas de pago y webhooks, streaming de video (LiveKit), OAuth de terceros</dd></div>
+      <div class="skill-row"><dt>Ing. industrial</dt><dd>Análisis de procesos, mejora continua, gestión de proyectos</dd></div>
+    </dl>
+  </section>
+
+  <section>
+    <h2>Formación &amp; certificaciones</h2>
+    <div class="meta-grid">
+      <div>
+        <p><strong>Ingeniería Industrial</strong></p>
+        <p class="sub">Universidad José Martí · Graduado 2025</p>
+        <p style="margin-top:1rem"><strong>Idiomas.</strong> Español — nativo · Inglés — A2–B1, en progreso</p>
+      </div>
+      <div>
+        <ul class="certs">
+          <li>Desarrollo Full Stack con Python y Django — Udemy (2026)</li>
+          <li>SQL: Creación de Bases de Datos, de cero a profesional — Udemy (2026)</li>
+          <li>JavaScript: de cero a experto — Udemy (2026)</li>
+          <li>Diseño Web con Inteligencia Artificial — Udemy (2026)</li>
+          <li>Desarrollo asistido por IA — Brais Moure (2026)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+</body>
+</html>

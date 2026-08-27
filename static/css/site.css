@@ -344,7 +344,7 @@ a.card:hover { border-color: var(--line-strong); transform: translateY(-2px); }
   .split { grid-template-columns: 18rem 1fr; gap: 2.5rem; }
   .split.sticky-aside > :first-child { position: sticky; top: 5.5rem; }
 }
-.avatar { width: 100%; max-width: 14rem; aspect-ratio: 1; border-radius: var(--radius); object-fit: cover; object-position: top; border: 1px solid var(--line); }
+.avatar { display: block; width: 100%; max-width: 14rem; height: auto; border-radius: var(--radius); border: 1px solid var(--line); background: var(--surface-2); }
 
 /* ---- Footer ----------------------------------------- */
 .site-footer { flex-shrink: 0; border-top: 1px solid var(--line); margin-top: clamp(3rem, 8vw, 5rem); }

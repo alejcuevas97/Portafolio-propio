@@ -12,7 +12,7 @@
       <div class="split sticky-aside" style="margin-top:1.75rem">
 
         <aside>
-          <img class="avatar" src="{% static 'images/2.png' %}" alt="Alejandro Cuevas González">
+          <img class="avatar" src="{% static 'images/perfil.jpg' %}" alt="Alejandro Cuevas González">
           <dl class="defs" style="margin-top:1.5rem">
             <div class="def"><dt>{% if request.LANGUAGE_CODE == 'es' %}Rol{% else %}Role{% endif %}</dt><dd>Full Stack Developer</dd></div>
             <div class="def"><dt>{% if request.LANGUAGE_CODE == 'es' %}Base{% else %}Based{% endif %}</dt><dd>Trinidad, Cuba</dd></div>
@@ -39,13 +39,14 @@
             </p>
             <p>
               {% if request.LANGUAGE_CODE == 'es' %}
-                Actualmente combino trabajo backend por contrato con el rol de fundador y responsable
-                técnico (CTO) de <a href="https://patinpay.cl" target="_blank" rel="noopener" style="color:var(--accent)">PatinPay</a>,
-                una plataforma SaaS de venta de entradas y transmisiones que llevé de cero a producción.
+                Hago trabajo backend por contrato, y mi proyecto propio más grande es
+                <a href="https://patinpay.cl" target="_blank" rel="noopener" style="color:var(--accent)">PatinPay</a>:
+                una plataforma SaaS de venta de entradas y transmisiones que diseñé y desarrollé
+                yo solo, de cero a producción.
               {% else %}
-                I currently combine contract backend work with the role of founder and technical lead
-                (CTO) of <a href="https://patinpay.cl" target="_blank" rel="noopener" style="color:var(--accent)">PatinPay</a>,
-                a ticketing and streaming SaaS I took from zero to production.
+                I do contract backend work, and my biggest personal project is
+                <a href="https://patinpay.cl" target="_blank" rel="noopener" style="color:var(--accent)">PatinPay</a>:
+                a ticketing and streaming SaaS I designed and built on my own, from zero to production.
               {% endif %}
             </p>
             <p>

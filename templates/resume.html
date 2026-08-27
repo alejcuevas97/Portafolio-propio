@@ -18,21 +18,21 @@
           {% if request.LANGUAGE_CODE == 'es' %}
             Desarrollador full stack con especialización backend. Diseño APIs REST en Python
             (Django / DRF, FastAPI) y construyo las interfaces React que las consumen, optimizando
-            bases de datos relacionales y desplegando en la nube con pipelines CI/CD. Combino trabajo
-            backend por contrato con el rol de fundador y responsable técnico (CTO) de PatinPay,
-            plataforma que llevé de cero a producción.
+            bases de datos relacionales y desplegando en la nube con pipelines CI/CD. Hago trabajo
+            backend por contrato, y mi proyecto propio más grande es PatinPay, una plataforma SaaS
+            que diseñé y desarrollé de cero a producción.
           {% else %}
             Full stack developer with a backend focus. I design REST APIs in Python (Django / DRF,
             FastAPI) and build the React interfaces that consume them, optimizing relational databases
-            and deploying to the cloud with CI/CD pipelines. I combine contract backend work with the
-            role of founder and technical lead (CTO) of PatinPay, a platform I took from zero to
+            and deploying to the cloud with CI/CD pipelines. I do contract backend work, and my
+            biggest personal project is PatinPay, a SaaS platform I designed and built from zero to
             production.
           {% endif %}
         </p>
       </div>
 
       <div class="actions" style="margin-top:1.75rem">
-        <a class="btn" href="{% static 'cv/CV_Alejandro_Cuevas_Gonzalez.pdf' %}" download>
+        <a class="btn" href="{% static 'cv/CV_Alejandro_Cuevas_Gonzalez.pdf' %}" download="CV_Alejandro_Cuevas_Gonzalez.pdf">
           {% if request.LANGUAGE_CODE == 'es' %}Descargar CV (PDF){% else %}Download CV (PDF){% endif %}
         </a>
         <button class="btn-ghost no-print" type="button" onclick="window.print()">
@@ -50,7 +50,7 @@
         <div class="def"><dt>{% if request.LANGUAGE_CODE == 'es' %}Ubicación{% else %}Location{% endif %}</dt><dd>Trinidad, Cuba (UTC−5)</dd></div>
         <div class="def"><dt>{% if request.LANGUAGE_CODE == 'es' %}Idiomas{% else %}Languages{% endif %}</dt><dd>{% if request.LANGUAGE_CODE == 'es' %}Español (nativo) · Inglés (A2–B1){% else %}Spanish (native) · English (A2–B1){% endif %}</dd></div>
         <div class="def"><dt>{% if request.LANGUAGE_CODE == 'es' %}Formación{% else %}Education{% endif %}</dt><dd>{% if request.LANGUAGE_CODE == 'es' %}Ingeniería Industrial — Universidad José Martí (2025){% else %}Industrial Engineering — José Martí University (2025){% endif %}</dd></div>
-        <div class="def"><dt>{% if request.LANGUAGE_CODE == 'es' %}Ahora{% else %}Now{% endif %}</dt><dd><span style="color:var(--accent)">PatinPay</span> — {% if request.LANGUAGE_CODE == 'es' %}Fundador / CTO{% else %}Founder / CTO{% endif %}</dd></div>
+        <div class="def"><dt>{% if request.LANGUAGE_CODE == 'es' %}Proyecto propio{% else %}Personal project{% endif %}</dt><dd><span style="color:var(--accent)">PatinPay</span> — {% if request.LANGUAGE_CODE == 'es' %}SaaS de eventos, en producción{% else %}events SaaS, in production{% endif %}</dd></div>
       </dl>
     </section>
 

@@ -22,7 +22,7 @@
         {% endif %}
       </p>
       <div class="actions" style="margin-top:1.5rem">
-        <a class="btn-ghost" href="{% static 'cv/CV_Alejandro_Cuevas_Gonzalez.pdf' %}" download>{% if request.LANGUAGE_CODE == 'es' %}CV en PDF{% else %}CV as PDF{% endif %}</a>
+        <a class="btn-ghost" href="{% static 'cv/CV_Alejandro_Cuevas_Gonzalez.pdf' %}" download="CV_Alejandro_Cuevas_Gonzalez.pdf">{% if request.LANGUAGE_CODE == 'es' %}CV en PDF{% else %}CV as PDF{% endif %}</a>
         <a class="btn-ghost" href="{% url 'profile' %}">{% if request.LANGUAGE_CODE == 'es' %}Quién soy{% else %}Who I am{% endif %}</a>
       </div>
     </section>
@@ -43,25 +43,31 @@
 
     <section data-reveal>
       <div class="section-head">
+        <span class="eyebrow">{% if request.LANGUAGE_CODE == 'es' %}Proyecto propio{% else %}Personal project{% endif %}</span>
+        <a class="mono" href="{% url 'projects' %}">{% if request.LANGUAGE_CODE == 'es' %}proyectos →{% else %}projects →{% endif %}</a>
+      </div>
+      <article class="entry">
+        <div class="entry-top">
+          <div>
+            <span class="entry-role">PatinPay</span>
+            <span class="entry-org">— {% if request.LANGUAGE_CODE == 'es' %}proyecto propio · patinpay.cl{% else %}personal project · patinpay.cl{% endif %}</span>
+          </div>
+          <span class="entry-date">2026</span>
+        </div>
+        <ul>
+          <li>{% if request.LANGUAGE_CODE == 'es' %}Plataforma SaaS de gestión de eventos que diseñé y desarrollé en solitario, de cero a producción: entradas, tienda, rifas, transmisiones en vivo y validación de accesos por QR.{% else %}Event-management SaaS I designed and built solo, from zero to production: ticketing, store, raffles, live streaming and QR access validation.{% endif %}</li>
+          <li>{% if request.LANGUAGE_CODE == 'es' %}Backend en Django REST Framework: API de ~70 endpoints, autenticación JWT con roles (administrador / organizador / validador), documentación OpenAPI/Swagger.{% else %}Django REST Framework backend: ~70-endpoint API, role-based JWT auth (admin / organizer / validator), OpenAPI/Swagger docs.{% endif %}</li>
+          <li>{% if request.LANGUAGE_CODE == 'es' %}Frontend en React (Vite, Tailwind, PWA): carrito y checkout, escáner de QR con cámara, reproductor de video en vivo (LiveKit) y exportación de reportes a PDF/Excel.{% else %}React frontend (Vite, Tailwind, PWA): cart and checkout, camera QR scanner, live video player (LiveKit) and PDF/Excel report export.{% endif %}</li>
+          <li>{% if request.LANGUAGE_CODE == 'es' %}Pagos con Transbank Webpay (incluidos webhooks), streaming con LiveKit y OAuth con Twitch. Despliegue con API y frontend separados y Cloudflare.{% else %}Transbank Webpay payments (webhooks included), LiveKit streaming and Twitch OAuth. Deployed with a split API/frontend setup and Cloudflare.{% endif %}</li>
+        </ul>
+      </article>
+    </section>
+
+    <section data-reveal>
+      <div class="section-head">
         <span class="eyebrow">{% if request.LANGUAGE_CODE == 'es' %}Experiencia{% else %}Experience{% endif %}</span>
       </div>
       <div class="entries" data-reveal-stagger>
-
-        <article class="entry">
-          <div class="entry-top">
-            <div>
-              <span class="entry-role">{% if request.LANGUAGE_CODE == 'es' %}Fundador y Responsable Técnico (CTO){% else %}Founder &amp; Technical Lead (CTO){% endif %}</span>
-              <span class="entry-org">— PatinPay · patinpay.cl</span>
-            </div>
-            <span class="entry-date">2026 — {% if request.LANGUAGE_CODE == 'es' %}presente{% else %}present{% endif %}</span>
-          </div>
-          <ul>
-            <li>{% if request.LANGUAGE_CODE == 'es' %}Plataforma SaaS de gestión de eventos llevada de cero a producción en solitario: entradas, tienda, rifas, transmisiones en vivo y validación de accesos por QR.{% else %}Event-management SaaS taken solo from zero to production: ticketing, store, raffles, live streaming and QR access validation.{% endif %}</li>
-            <li>{% if request.LANGUAGE_CODE == 'es' %}Backend en Django REST Framework: API de ~70 endpoints, autenticación JWT con roles (administrador / organizador / validador), documentación OpenAPI/Swagger.{% else %}Django REST Framework backend: ~70-endpoint API, role-based JWT auth (admin / organizer / validator), OpenAPI/Swagger docs.{% endif %}</li>
-            <li>{% if request.LANGUAGE_CODE == 'es' %}Frontend en React (Vite, Tailwind, PWA): carrito y checkout, escáner de QR con cámara, reproductor de video en vivo (LiveKit) y exportación de reportes a PDF/Excel.{% else %}React frontend (Vite, Tailwind, PWA): cart and checkout, camera QR scanner, live video player (LiveKit) and PDF/Excel report export.{% endif %}</li>
-            <li>{% if request.LANGUAGE_CODE == 'es' %}Pagos con Transbank Webpay (incluidos webhooks), streaming con LiveKit y OAuth con Twitch. Despliegue con API y frontend separados y Cloudflare.{% else %}Transbank Webpay payments (webhooks included), LiveKit streaming and Twitch OAuth. Deployed with a split API/frontend setup and Cloudflare.{% endif %}</li>
-          </ul>
-        </article>
 
         <article class="entry">
           <div class="entry-top">

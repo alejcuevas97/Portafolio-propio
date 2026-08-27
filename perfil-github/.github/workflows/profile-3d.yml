@@ -1,0 +1,33 @@
+name: GitHub-Profile-3D-Contrib
+
+on:
+  schedule:
+    # Se regenera una vez al dia (18:00 UTC)
+    - cron: "0 18 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Generar calendario 3D
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generar los SVG 3D
+        uses: yoshi389111/github-profile-3d-contrib@main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          USERNAME: ${{ github.repository_owner }}
+
+      - name: Commit y push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A profile-3d-contrib
+          git commit -m "chore: actualizar calendario 3D" || { echo "sin cambios"; exit 0; }
+          git pull --rebase --autostash origin main || true
+          git push

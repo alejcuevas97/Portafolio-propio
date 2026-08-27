@@ -1,17 +1,16 @@
 CV
 ==
 
-cv.html  ->  versión maquetada del CV, lista para imprimir.
+cv.html   -> versión maquetada del CV, lista para imprimir (SIEMPRE la fuente de verdad).
+CV_Alejandro_Cuevas_Gonzalez.pdf  -> el PDF que descargan los botones "Descargar CV".
 
-Para generar el PDF:
-  1. Abre static/cv/cv.html en el navegador (doble clic, o arrástralo a una pestaña).
-  2. Pulsa "Imprimir / Guardar como PDF"  (o Ctrl+P).
-  3. En "Destino" elige "Guardar como PDF" y desactiva encabezados/pies de página.
-  4. Guarda el archivo aquí mismo con el nombre exacto:
+Para regenerar el PDF tras cambiar cv.html:
+  1. Abre static/cv/cv.html en el navegador (doble clic).
+  2. Ctrl+P  ->  Destino: "Guardar como PDF"  ->  desactiva encabezados/pies.
+  3. Guárdalo AQUÍ con el nombre EXACTO (el navegador suele proponer otro):
 
-         CV_Alejandro_Cuevas_Gonzalez.pdf
+         CV_Alejandro_Cuevas_Gonzalez.pdf   (con guiones bajos, sin acentos)
 
-  5. python manage.py collectstatic --noinput
-
-Los botones "Descargar CV" de perfil/, about/ y resume/ apuntan a
-{% static "cv/CV_Alejandro_Cuevas_Gonzalez.pdf" %}.
+     Si te lo guarda como "CV — Alejandro Cuevas González.pdf", renómbralo.
+  4. python manage.py collectstatic --noinput --clear
+  5. En el navegador, recarga con Ctrl+Shift+R (el PDF viejo queda en caché).

@@ -14,16 +14,16 @@
     </h1>
     <p class="lede rise rise-3">
       {% if request.LANGUAGE_CODE == 'es' %}
-        Especialización backend con Python y Django. Fundador y CTO de PatinPay.
-        Disponible para remoto, freelance o contrato.
+        Especialización backend con Python y Django. Creador de PatinPay, una plataforma SaaS
+        que desarrollé de cero a producción. Disponible para remoto, freelance o contrato.
       {% else %}
-        Backend focus with Python and Django. Founder and CTO of PatinPay.
-        Available for remote, freelance or contract.
+        Backend focus with Python and Django. Creator of PatinPay, a SaaS platform I built
+        from zero to production. Available for remote, freelance or contract.
       {% endif %}
     </p>
     <div class="actions rise rise-4">
       <a class="btn" href="{% url 'projects' %}">{% if request.LANGUAGE_CODE == 'es' %}Ver proyectos{% else %}View projects{% endif %}</a>
-      <a class="btn-ghost" href="{% static 'cv/CV_Alejandro_Cuevas_Gonzalez.pdf' %}" download>{% if request.LANGUAGE_CODE == 'es' %}Descargar CV{% else %}Download CV{% endif %}</a>
+      <a class="btn-ghost" href="{% static 'cv/CV_Alejandro_Cuevas_Gonzalez.pdf' %}" download="CV_Alejandro_Cuevas_Gonzalez.pdf">{% if request.LANGUAGE_CODE == 'es' %}Descargar CV{% else %}Download CV{% endif %}</a>
     </div>
   </div>
 </section>
@@ -31,17 +31,17 @@
 <section class="wrap page" style="padding-top:0" data-reveal>
   <a class="featured" href="https://patinpay.cl" target="_blank" rel="noopener">
     <div class="featured-top">
-      <span>{% if request.LANGUAGE_CODE == 'es' %}// proyecto destacado{% else %}// featured project{% endif %}</span>
+      <span>{% if request.LANGUAGE_CODE == 'es' %}// proyecto propio{% else %}// personal project{% endif %}</span>
       <span class="link">patinpay.cl ↗</span>
     </div>
     <h2>PatinPay</h2>
     <p>
       {% if request.LANGUAGE_CODE == 'es' %}
-        Plataforma SaaS de gestión de eventos, llevada de cero a producción en solitario:
-        entradas, tienda, rifas, transmisiones en vivo y control de acceso por QR.
+        Plataforma SaaS de gestión de eventos que diseñé y desarrollé en solitario, de cero a
+        producción: entradas, tienda, rifas, transmisiones en vivo y control de acceso por QR.
       {% else %}
-        Event-management SaaS, taken solo from zero to production: ticketing, store, raffles,
-        live streaming and QR access control.
+        Event-management SaaS I designed and built solo, from zero to production: ticketing,
+        store, raffles, live streaming and QR access control.
       {% endif %}
     </p>
     <p class="featured-tech">
