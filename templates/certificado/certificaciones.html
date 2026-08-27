@@ -1,46 +1,55 @@
 {% extends 'base.html' %}
-{% load static i18n %}
+{% load i18n %}
 
-{% block title %}{% if request.LANGUAGE_CODE == 'es' %}Certificaciones{% else %}Certifications{% endif %}{% endblock title %}
+{% block title %}{% if request.LANGUAGE_CODE == 'es' %}Certificaciones{% else %}Certifications{% endif %} — Alejandro Cuevas{% endblock title %}
 
 {% block content %}
-<div class="min-h-screen bg-gray-100 py-10 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-5xl mx-auto bg-white shadow rounded-lg overflow-hidden">
-        <div class="bg-blue-600 px-6 py-8 sm:px-10">
-            <h1 class="text-3xl font-semibold text-white">{% if request.LANGUAGE_CODE == 'es' %}Certificaciones{% else %}Certifications{% endif %}</h1>
-            <p class="mt-2 text-blue-100 max-w-2xl">{% if request.LANGUAGE_CODE == 'es' %}Aquí se muestran las certificaciones obtenidas.{% else %}The certifications obtained are shown here.{% endif %}</p>
-        </div>
-        <div class="p-6 sm:p-8">
-            {% if certifications %}
-                <div class="grid gap-6">
-                    {% for item in certifications %}
-                        <article class="border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow duration-200">
-                            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                                <div>
-                                    <h2 class="text-2xl font-semibold text-gray-900">{{ item.title }}</h2>
-                                    <p class="text-sm text-gray-500">{{ item.issuer }}</p>
-                                </div>
-                                <p class="text-sm text-blue-600 font-medium">{{ item.issued_date|date:'F Y' }}</p>
-                            </div>
-                            {% if item.description %}
-                                <p class="mt-4 text-gray-700">{{ item.description }}</p>
-                            {% endif %}
-                            {% if item.credential_url %}
-                                <div class="mt-4">
-                                    <a href="{{ item.credential_url }}" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 font-medium">{% if request.LANGUAGE_CODE == 'es' %}Ver credencial{% else %}View credential{% endif %}</a>
-                                </div>
-                            {% endif %}
-                        </article>
-                    {% endfor %}
+<div class="page">
+  <div class="wrap" style="max-width:52rem">
+    <section>
+      <span class="eyebrow">{% if request.LANGUAGE_CODE == 'es' %}Certificaciones{% else %}Certifications{% endif %}</span>
+      <h1 style="font-size:var(--step-3);margin-top:1rem">
+        {% if request.LANGUAGE_CODE == 'es' %}Formación continua.{% else %}Ongoing learning.{% endif %}
+      </h1>
+    </section>
+
+    <section data-reveal>
+      {% if certifications %}
+        <div class="entries" data-reveal-stagger>
+          {% for item in certifications %}
+            <article class="entry">
+              <div class="entry-top">
+                <div>
+                  <span class="entry-role">{{ item.title }}</span>
+                  {% if item.issuer %}<span class="entry-org">— {{ item.issuer }}</span>{% endif %}
                 </div>
+                {% if item.issued_date %}<span class="entry-date">{{ item.issued_date|date:'Y' }}</span>{% endif %}
+              </div>
+              {% if item.description %}<p class="muted">{{ item.description }}</p>{% endif %}
+              {% if item.credential_url %}
+                <a class="mono" style="color:var(--accent)" href="{{ item.credential_url }}" target="_blank" rel="noopener">
+                  {% if request.LANGUAGE_CODE == 'es' %}ver credencial →{% else %}view credential →{% endif %}
+                </a>
+              {% endif %}
+            </article>
+          {% endfor %}
+        </div>
+      {% else %}
+        <div class="card">
+          <p class="muted">
+            {% if request.LANGUAGE_CODE == 'es' %}
+              Aún no hay certificaciones publicadas. Se cargan desde el panel de administración.
+              Mientras tanto: Full Stack Django, SQL, JavaScript y Diseño Web con IA (Udemy, 2026),
+              y Desarrollo asistido por IA (Brais Moure, 2026).
             {% else %}
-                <div class="rounded-xl border border-dashed border-gray-300 bg-gray-50 p-8 text-center">
-                    <p class="text-gray-600 text-lg">{% if request.LANGUAGE_CODE == 'es' %}Aún no hay certificaciones publicadas. Ingresa datos desde el backend en el panel de administración.{% else %}No certifications have been published yet. Add them from the backend admin panel.{% endif %}</p>
-                </div>
+              No certifications published yet. They are added from the admin panel. In the meantime:
+              Full Stack Django, SQL, JavaScript and AI Web Design (Udemy, 2026), and AI-assisted
+              development (Brais Moure, 2026).
             {% endif %}
+          </p>
         </div>
-    </div>
+      {% endif %}
+    </section>
+  </div>
 </div>
-
-
 {% endblock content %}

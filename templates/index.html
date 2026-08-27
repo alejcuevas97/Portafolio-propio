@@ -1,24 +1,97 @@
-{%extends 'base.html'%}
+{% extends 'base.html' %}
+{% load static i18n %}
 
-{% load static %}
-
-{% block navbar %}{% endblock navbar %}
+{% block title %}Alejandro Cuevas — Full Stack Developer{% endblock title %}
 
 {% block content %}
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-lead">
+      <span class="eyebrow rise">
+        {% if request.LANGUAGE_CODE == 'es' %}Trinidad, Cuba · Disponible para remoto / freelance{% else %}Trinidad, Cuba · Available for remote / freelance{% endif %}
+      </span>
+      <h1 class="rise rise-2">
+        {% if request.LANGUAGE_CODE == 'es' %}Diseño la API y también la interfaz que la consume.{% else %}I design the API and the interface that consumes it.{% endif %}
+      </h1>
+      <p class="lede rise rise-3">
+        {% if request.LANGUAGE_CODE == 'es' %}
+          Full Stack Developer con especialización backend. Fundador y responsable técnico (CTO) de PatinPay.
+        {% else %}
+          Full stack developer with a backend focus. Founder and technical lead (CTO) of PatinPay.
+        {% endif %}
+      </p>
+      <div class="actions rise rise-4">
+        <a class="btn" href="{% url 'projects' %}">{% if request.LANGUAGE_CODE == 'es' %}Ver proyectos{% else %}View projects{% endif %}</a>
+        <a class="btn-ghost" href="{% static 'cv/CV_Alejandro_Cuevas_Gonzalez.pdf' %}" download>{% if request.LANGUAGE_CODE == 'es' %}Descargar CV{% else %}Download CV{% endif %}</a>
+      </div>
+      <div class="hero-meta rise rise-4">
+        <div><b>~70</b><span>{% if request.LANGUAGE_CODE == 'es' %}endpoints en producción{% else %}endpoints in production{% endif %}</span></div>
+        <div><b>0 → prod</b><span>{% if request.LANGUAGE_CODE == 'es' %}PatinPay, en solitario{% else %}PatinPay, solo{% endif %}</span></div>
+        <div><b>10+ {% if request.LANGUAGE_CODE == 'es' %}años{% else %}yrs{% endif %}</b><span>{% if request.LANGUAGE_CODE == 'es' %}resolviendo sistemas{% else %}fixing systems{% endif %}</span></div>
+      </div>
+    </div>
 
-  <div class="min-h-screen flex flex-col">
-<div class="relative h-screen overflow-hidden text-white bg-gradient from-purple-600 to-blue-600">
-  <div class="absolute inset-0">
-    <img src="https://images.unsplash.com/photo-1522252234503-e356532cafd5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHw2fHxjb2RlfGVufDB8MHx8fDE2OTQwOTg0MTZ8MA&ixlib=rb-4.0.3&q=80&w=1080" alt="Background Image" class="object-cover object-center w-full h-full" />
-    <div class="absolute inset-0 bg-black opacity-50"></div>
+    <aside class="spec rise rise-3" aria-label="{% if request.LANGUAGE_CODE == 'es' %}Ficha técnica{% else %}Spec sheet{% endif %}">
+      <div class="spec-head">~/alejandro-cuevas</div>
+      <div class="spec-body">
+        <div class="spec-group rise rise-2">
+          <span class="spec-label">identity</span>
+          <dl class="spec-row"><dt>name</dt><dd>Alejandro Cuevas González</dd></dl>
+          <dl class="spec-row"><dt>role</dt><dd>Full Stack Developer</dd></dl>
+          <dl class="spec-row"><dt>focus</dt><dd>backend · APIs</dd></dl>
+        </div>
+        <div class="spec-group rise rise-3">
+          <span class="spec-label">stack</span>
+          <dl class="spec-row"><dt>backend</dt><dd>Python · Django · DRF · FastAPI</dd></dl>
+          <dl class="spec-row"><dt>frontend</dt><dd>React · Vite · Tailwind</dd></dl>
+          <dl class="spec-row"><dt>data</dt><dd>PostgreSQL · MySQL</dd></dl>
+        </div>
+        <div class="spec-group rise rise-4">
+          <span class="spec-label">now</span>
+          <dl class="spec-row"><dt>PatinPay</dt><dd><span class="on">Founder / CTO</span> · {% if request.LANGUAGE_CODE == 'es' %}en producción{% else %}in production{% endif %}</dd></dl>
+        </div>
+      </div>
+    </aside>
   </div>
-  
-  <div class="relative z-10 flex flex-col items-center justify-center h-full text-center">
-    <h1 class="mb-4 text-5xl font-bold leading-tight">{% if request.LANGUAGE_CODE == 'es' %}Bienvenido a mi Portafolio{% else %}Welcome to my Portfolio{% endif %}</h1>
-    <a href="{%url 'profile'%}" class="px-6 py-2 text-lg font-semibold text-gray-900 transition duration-300 ease-in-out transform bg-yellow-400 rounded-full hover:bg-yellow-300 hover:scale-105 hover:shadow-lg">{% if request.LANGUAGE_CODE == 'es' %}Iniciar{% else %}Start{% endif %}</a>
-  </div>
-</div>
+</section>
 
-    
+<section class="wrap page" style="padding-top:0" data-reveal>
+  <div class="section-head">
+    <span class="eyebrow">{% if request.LANGUAGE_CODE == 'es' %}Proyecto destacado{% else %}Featured project{% endif %}</span>
+    <a class="mono" href="{% url 'projects' %}">{% if request.LANGUAGE_CODE == 'es' %}todos →{% else %}all →{% endif %}</a>
+  </div>
+
+  <a class="card" href="https://patinpay.cl" target="_blank" rel="noopener">
+    <h2 style="font-size:var(--step-3)">PatinPay</h2>
+    <p class="muted" style="margin-top:.6rem;max-width:60ch">
+      {% if request.LANGUAGE_CODE == 'es' %}
+        Plataforma SaaS de gestión de eventos llevada de cero a producción en solitario:
+        entradas, tienda, rifas, transmisiones en vivo y control de acceso por QR.
+      {% else %}
+        Event-management SaaS taken solo from zero to production: ticketing, store,
+        raffles, live streaming and QR access control.
+      {% endif %}
+    </p>
+    <div class="tags" style="margin-top:1.1rem">
+      <span class="tag">Django REST Framework</span>
+      <span class="tag">React · Vite · PWA</span>
+      <span class="tag">JWT · roles</span>
+      <span class="tag">Transbank Webpay</span>
+      <span class="tag">LiveKit</span>
+    </div>
+    <div class="mono" style="margin-top:1.1rem;color:var(--accent)">patinpay.cl →</div>
+  </a>
+</section>
+
+<section class="wrap page" style="padding-top:0" data-reveal>
+  <div class="section-head">
+    <span class="eyebrow">{% if request.LANGUAGE_CODE == 'es' %}Enfoque{% else %}What I do{% endif %}</span>
+  </div>
+  <dl class="defs" data-reveal-stagger>
+    <div class="def"><dt>Backend</dt><dd>Python, Django, Django REST Framework, FastAPI, JWT/OAuth2, OpenAPI/Swagger</dd></div>
+    <div class="def"><dt>Frontend</dt><dd>React, React Router, Tailwind CSS, Vite, PWA</dd></div>
+    <div class="def"><dt>{% if request.LANGUAGE_CODE == 'es' %}Datos{% else %}Data{% endif %}</dt><dd>PostgreSQL, MySQL — {% if request.LANGUAGE_CODE == 'es' %}diseño de esquema y optimización de consultas{% else %}schema design and query optimization{% endif %}</dd></div>
+    <div class="def"><dt>{% if request.LANGUAGE_CODE == 'es' %}Entrega{% else %}Delivery{% endif %}</dt><dd>Git, GitHub Actions, Docker, Cloudflare — {% if request.LANGUAGE_CODE == 'es' %}pipelines CI/CD y despliegue en la nube{% else %}CI/CD pipelines and cloud deployment{% endif %}</dd></div>
+  </dl>
+</section>
 {% endblock content %}
-    

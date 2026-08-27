@@ -10,7 +10,7 @@ https://portafolio-propio.onrender.com
 - **Backend**: Django 6.0
 - **API**: Django Rest Framework (DRF) 3.17.1
 - **Autenticación**: Django REST Framework Simple JWT
-- **Frontend**: HTML, CSS, Tailwind CSS 4.2.4
+- **Frontend**: HTML y CSS propio (sistema de diseño hecho a mano, sin framework ni build)
 - **Base de Datos**: PostgreSQL o SQLite
 - **Almacenamiento de medios**: Cloudinary
 - **Despliegue**: Gunicorn, WhiteNoise
@@ -52,7 +52,6 @@ https://portafolio-propio.onrender.com
 
 ### Prerrequisitos
 - Python 3.8+
-- Node.js (para Tailwind CSS)
 - PostgreSQL (opcional, SQLite por defecto)
 
 ### Pasos
@@ -75,13 +74,7 @@ https://portafolio-propio.onrender.com
    pip install -r requirements.txt
    ```
 
-4. **Instala dependencias de Node.js y compila CSS:**
-   ```bash
-   npm install
-   npm run build:css
-   ```
-
-5. **Configura variables de entorno (.env):**
+4. **Configura variables de entorno (.env):**
    Copia `.env.example` a `.env` en la raíz del proyecto y ajústalo. Todas las
    variables tienen valores por defecto para desarrollo local:
    - Sin `DATABASE_URL` → usa SQLite (`db.sqlite3`).

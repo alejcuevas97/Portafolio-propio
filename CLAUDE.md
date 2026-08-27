@@ -10,11 +10,10 @@ Personal portfolio site built with **Django 6.0**. Server-rendered pages (Django
 
 Use the project virtualenv: `.venv/Scripts/python.exe` on Windows (there is also a stale `.venv-1`).
 
+No Node / front-end build — CSS is hand-authored (`static/css/site.css`).
+
 ```bash
 pip install -r requirements.txt
-npm install
-npm run build:css                         # compile static/css/output.css (Tailwind v4 CLI)
-npm run watch:css                         # rebuild CSS on change during development
 
 python manage.py migrate
 python manage.py runserver                # http://localhost:8000
@@ -25,7 +24,7 @@ python manage.py collectstatic --noinput
 python manage.py test                     # Django test runner (tests.py files are empty stubs)
 python manage.py test porfolio.tests.SomeTestCase.test_method
 
-bash build.sh                             # Render build: pip + npm + collectstatic + migrate + create_admin
+bash build.sh                             # Render build: pip + collectstatic + migrate + create_admin
 ```
 
 ## Configuration
@@ -54,13 +53,24 @@ The codebase is written to demonstrate SOLID principles, so there is more indire
 
 **Projects business logic**: `porfolio/services.py` `ProjectService` (static methods: list, count, search, cached list, CRUD, by-year) is the single service layer. `ProjectListView` calls `ProjectService.get_all_projects()`. Model-level validation is in `ProjectValidator`, invoked from `Project.save()`. Form-level checks (min lengths) are in `ProjectForm.clean()`.
 
-**Templates** (`templates/`): `base.html` is the skeleton — it loads the compiled Tailwind (`{% static 'css/output.css' %}`) and Font Awesome (cdnjs stylesheet) once, then includes `navbar.html` inside `<body>`. Page templates extend `base.html`. Some templates still contain stray `<head>`/`<body>` tags inside their content block — invalid nesting that browsers tolerate; tidy opportunistically, don't rewrite wholesale. `index.html` blanks the navbar block. i18n uses cookie-based `set_language` + `{% if request.LANGUAGE_CODE == 'es' %}` branches in templates; there are no `.mo` catalogs yet (`locale/` exists for future `makemessages`).
+**Front-end / design system** — there is **no build step and no Tailwind**. `static/css/site.css` is a hand-authored stylesheet (design direction: "editorial técnico" — restrained saturation, paper-warm neutrals, one muted blue accent, IBM Plex Sans/Mono + Newsreader from Google Fonts, subtle grain via `body::before`). Templates use **semantic class names** defined there (`.wrap`, `.page`, `.hero`, `.eyebrow`, `.section-head`, `.card`, `.card-grid`, `.btn`/`.btn-ghost`, `.entry`/`.entries`, `.defs`/`.def`, `.tags`/`.tag`, `.channels`/`.channel`, `.split`, `.avatar`). Add or extend rules in `site.css`; don't reach for utility classes. Icons are unicode glyphs, not an icon font.
 
-**CV download**: `perfil.html`, `about.html` and `resume.html` link to `{% static 'cv/CV_Alejandro_Cuevas_Gonzalez.pdf' %}` with a `download` attribute. The PDF must be placed at `static/cv/CV_Alejandro_Cuevas_Gonzalez.pdf` (see `static/cv/README.txt`) and picked up by `collectstatic`.
+`base.html` is the skeleton: theme pre-paint script → Google Fonts + `site.css` → `{% block chrome %}` (`navbar.html`) → `<main>{% block content %}` → footer → theme-toggle + mobile-nav scripts. `navbar.html` marks the active link via `request.resolver_match.url_name` → `aria-current="page"`.
 
-**Tailwind**: `src/input.css` = `@import "tailwindcss";` + `@source "../templates";` + a **dark-mode override block**. `npm run build:css` compiles `static/css/output.css` (git-ignored, rebuilt in `build.sh` before `collectstatic`). Re-run it after adding new utility classes to templates. No CDN is used at runtime.
+**Dark mode**: three states via `data-theme` on `<html>` — unset = follow `prefers-color-scheme`; `"light"`/`"dark"` = explicit. `window.toggleTheme()` (in `base.html`) flips and persists to `localStorage.theme`; a pre-paint inline script applies it. All colors are CSS custom properties redefined in three token blocks in `site.css` (`:root`, `@media (prefers-color-scheme: dark) :root:not([data-theme="light"])`, `:root[data-theme="dark"]`) — never hard-code a color outside those blocks.
 
-**Dark mode**: toggled by a `.dark` class on `<html>`, persisted to `localStorage.theme`, applied before first paint by an inline script in `base.html` (falls back to `prefers-color-scheme`). `window.toggleTheme()` + the sun/moon button (`[data-theme-icon]`) live in `base.html`/`navbar.html`. Templates use plain color utilities (no `dark:` variants); instead the `.dark …` rules at the end of `src/input.css` remap the specific `bg-*`/`text-*`/`border-*` utilities in use. When a template introduces a new color utility, add it to that block and rebuild.
+**i18n**: cookie-based `set_language` + `{% if request.LANGUAGE_CODE == 'es' %}…{% else %}…{% endif %}` branches inline in templates (no `.po`/`.mo` catalogs; `locale/` exists for future `makemessages`).
+
+**CV download**: `index.html`, `perfil.html`, `about.html`, `resume.html` link to `{% static 'cv/CV_Alejandro_Cuevas_Gonzalez.pdf' %}` with `download`. The PDF must be placed at `static/cv/CV_Alejandro_Cuevas_Gonzalez.pdf` (see `static/cv/README.txt`, and `static/cv/cv.html` is a print-to-PDF source) and picked up by `collectstatic`.
+
+**Page purposes** — kept deliberately non-overlapping:
+- `/` — marketing hero (pitch + `.spec` panel) + featured PatinPay + a short "Enfoque" skills teaser.
+- `/perfil/` — **the person**: photo, first-person bio prose, quick-facts aside. No skills grid, no timeline.
+- `/about/` — **the record**: positioning line + canonical skills `defs` + canonical experience timeline (full bullets) + education/certs. This is the source of truth for skills/experience.
+- `/resume/` — **the CV hub**: one summary paragraph + Download-PDF/Print buttons + an "at a glance" facts `defs` + a card pointing back to `/about/` and `/proyectos/`. Deliberately does *not* repeat the timeline or skills grid.
+- `/proyectos/` — hard-coded featured PatinPay card + DB-driven grid. `/certificaciones/` — DB-driven list.
+
+PatinPay is **not** a DB row — hard-coded on `/` and `/proyectos/`. When editing bio/summary copy, keep the split: personal narrative lives only in `/perfil/`, the structured record only in `/about/`, the condensed CV blurb only in `/resume/`.
 
 ## Agent skills
 

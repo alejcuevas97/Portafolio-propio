@@ -1,52 +1,86 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load static i18n %}
+
+{% block title %}{% if request.LANGUAGE_CODE == 'es' %}Proyectos{% else %}Projects{% endif %} — Alejandro Cuevas{% endblock title %}
 
 {% block content %}
-<div class="min-h-screen bg-slate-100">
-    
+<div class="page">
+  <div class="wrap">
 
-    <div class="max-w-7xl mx-auto px-4 py-10 lg:px-8">
-        <div class="mb-8 rounded-3xl bg-white p-8 shadow-lg">
-            <h1 class="text-3xl font-bold text-slate-900">{% if request.LANGUAGE_CODE == 'es' %}Proyectos personales{% else %}Personal projects{% endif %}</h1>
-            <p class="mt-3 text-slate-600">
-            {% if request.LANGUAGE_CODE == 'es' %}Esta sección muestra los proyectos registrados con sus imágenes almacenadas en Cloudinary. La carga de nuevos proyectos solo se realiza desde el panel administrativo.{% else %}This section displays the registered projects with their images stored on Cloudinary. Uploading new projects is only done through the backend (administrative panel).{% endif %}
-            </p>
+    <section>
+      <span class="eyebrow">{% if request.LANGUAGE_CODE == 'es' %}Proyectos{% else %}Projects{% endif %}</span>
+      <h1 style="font-size:var(--step-3);margin-top:1rem">
+        {% if request.LANGUAGE_CODE == 'es' %}Cosas que he construido y desplegado.{% else %}Things I've built and shipped.{% endif %}
+      </h1>
+      <p class="lede" style="margin-top:1rem;max-width:50ch">
+        {% if request.LANGUAGE_CODE == 'es' %}
+          Del diseño de la API al despliegue en producción. Los proyectos con imagen se gestionan
+          desde el panel de administración.
+        {% else %}
+          From API design to production deployment. Projects with an image are managed from the
+          admin panel.
+        {% endif %}
+      </p>
+    </section>
+
+    <section data-reveal>
+      <div class="section-head"><span class="eyebrow">{% if request.LANGUAGE_CODE == 'es' %}Destacado{% else %}Featured{% endif %}</span></div>
+      <a class="card" href="https://patinpay.cl" target="_blank" rel="noopener">
+        <h2 style="font-size:var(--step-2)">PatinPay <span class="mono" style="color:var(--accent)">· patinpay.cl</span></h2>
+        <p class="muted" style="margin-top:.55rem;max-width:62ch">
+          {% if request.LANGUAGE_CODE == 'es' %}
+            Plataforma SaaS full stack de gestión de eventos: entradas, tienda, rifas, transmisiones
+            en vivo y control de acceso por QR. Backend Django REST Framework (~70 endpoints, JWT con
+            roles), frontend React/Vite/PWA, pagos con Transbank Webpay y video con LiveKit.
+          {% else %}
+            Full stack event-management SaaS: ticketing, store, raffles, live streaming and QR access
+            control. Django REST Framework backend (~70 endpoints, role-based JWT), React/Vite/PWA
+            frontend, Transbank Webpay payments and LiveKit video.
+          {% endif %}
+        </p>
+        <div class="tags" style="margin-top:1rem">
+          <span class="tag">Django REST Framework</span>
+          <span class="tag">React · Vite · PWA</span>
+          <span class="tag">Transbank Webpay</span>
+          <span class="tag">LiveKit</span>
+          <span class="tag">Cloudflare</span>
         </div>
+      </a>
+    </section>
 
-        <div class="space-y-8">
-            <section class="rounded-3xl bg-white p-8 shadow-lg">
-                <h2 class="text-2xl font-semibold text-slate-900">{% if request.LANGUAGE_CODE == 'es' %}Lista de proyectos{% else %}Project List{% endif %}</h2>
-                <p class="mt-2 text-sm text-slate-500">
-                    {% if request.LANGUAGE_CODE == 'es' %}Esta vista pública no permite registrar nuevos proyectos, solo ver los que ya han sido guardados en el backend.{% else %}This public view does not allow you to register new projects, only to view those that have already been saved in the backend.{% endif %}
-                {% if proyectos %}
-                    <div class="mt-8 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
-                        {% for proyecto in proyectos %}
-                            <article class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-50 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
-                                <div class="h-56 overflow-hidden bg-slate-200">
-                                    {% if proyecto.image %}
-                                        <img src="{{ proyecto.image.url }}" alt="{{ proyecto.title }}" class="h-full w-full object-cover" />
-                                    {% else %}
-                                        <div class="flex h-full w-full items-center justify-center text-slate-500">No image</div>
-                                    {% endif %}
-                                </div>
-                                <div class="p-6">
-                                    <h3 class="text-xl font-semibold text-slate-900">{{ proyecto.title }}</h3>
-                                    <p class="mt-3 text-sm leading-6 text-slate-600">{{ proyecto.descriptions|truncatechars:140 }}</p>
-                                    <div class="mt-4 flex flex-wrap items-center justify-between gap-3">
-                                        <a href="{{ proyecto.link }}" target="_blank" class="text-sm font-medium text-slate-900 hover:text-slate-700">See project</a>
-                                        <span class="rounded-full bg-slate-200 px-3 py-1 text-xs font-medium text-slate-600">{{ proyecto.created|date:'d M Y' }}</span>
-                                    </div>
-                                </div>
-                            </article>
-                        {% endfor %}
-                    </div>
+    <section data-reveal>
+      <div class="section-head">
+        <span class="eyebrow">{% if request.LANGUAGE_CODE == 'es' %}Registro{% else %}Archive{% endif %}</span>
+        {% if proyectos %}<span class="mono">{{ total_projects }} {% if request.LANGUAGE_CODE == 'es' %}en total{% else %}total{% endif %}</span>{% endif %}
+      </div>
+
+      {% if proyectos %}
+        <div class="card-grid" data-reveal-stagger>
+          {% for proyecto in proyectos %}
+            <a class="card project" href="{{ proyecto.link }}" target="_blank" rel="noopener">
+              <div class="project-media">
+                {% if proyecto.image %}
+                  <img src="{{ proyecto.image.url }}" alt="{{ proyecto.title }}" loading="lazy">
                 {% else %}
-                    <p class="mt-6 text-sm text-slate-500">There are no registered projects yet.</p>
+                  <span class="noimg">no image</span>
                 {% endif %}
-            </section>
+              </div>
+              <div class="project-body">
+                <h3>{{ proyecto.title }}</h3>
+                <p>{{ proyecto.descriptions|truncatechars:150 }}</p>
+                <div class="project-foot">
+                  <span>{{ proyecto.created|date:'Y' }}</span>
+                  <span class="go">{% if request.LANGUAGE_CODE == 'es' %}ver →{% else %}open →{% endif %}</span>
+                </div>
+              </div>
+            </a>
+          {% endfor %}
         </div>
-    </div>
+      {% else %}
+        <p class="muted">{% if request.LANGUAGE_CODE == 'es' %}Aún no hay proyectos registrados en el backend.{% else %}No projects registered in the backend yet.{% endif %}</p>
+      {% endif %}
+    </section>
+
+  </div>
 </div>
-
-
 {% endblock content %}

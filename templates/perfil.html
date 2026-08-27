@@ -1,52 +1,77 @@
 {% extends 'base.html' %}
 {% load static i18n %}
 
+{% block title %}{% if request.LANGUAGE_CODE == 'es' %}Perfil{% else %}Profile{% endif %} — Alejandro Cuevas{% endblock title %}
+
 {% block content %}
-<section id="home"
-  class="relative min-h-screen flex flex-col-reverse md:flex-row items-center justify-between
-         gap-10 px-9 sm:px-10 md:px-12 py-12 bg-gray-200">
+<div class="page">
+  <div class="wrap">
 
-  <div class="md:w-1/2">
-    <h1 class="text-3xl sm:text-4xl md:text-5xl font-semibold text-black mb-3">
-      {% if request.LANGUAGE_CODE == 'es' %}Hola, soy Alejandro Cuevas González{% else %}Hi, I'm Alejandro Cuevas González{% endif %}
-    </h1>
-    <p class="text-lg sm:text-xl md:text-2xl font-medium text-gray-700 mb-3">
-      Full Stack Developer — Python/Django · React
-    </p>
-    <p class="text-base sm:text-lg text-gray-600 mb-6">
-      {% if request.LANGUAGE_CODE == 'es' %}
-        Full stack con especialización backend: diseño APIs en Django/DRF y construyo las interfaces
-        React que las consumen. Fundador y responsable técnico (CTO) de PatinPay, que llevé de cero a
-        producción. Ingeniero Industrial de formación, con pensamiento analítico y orientación a procesos.
-      {% else %}
-        Full stack with a backend focus: I design APIs in Django/DRF and build the React interfaces that
-        consume them. Founder and technical lead (CTO) of PatinPay, which I took from zero to production.
-        Industrial Engineer by training, with analytical thinking and a process-oriented mindset.
-      {% endif %}
-    </p>
-    <div class="flex flex-wrap gap-4">
-      <a href="{% url 'resume' %}"
-         class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-5 rounded-full transition">
-        {% if request.LANGUAGE_CODE == 'es' %}Ver currículum{% else %}View resume{% endif %}
-      </a>
-      <a href="{% static 'cv/CV_Alejandro_Cuevas_Gonzalez.pdf' %}" download
-         class="inline-flex items-center gap-2 bg-white hover:bg-gray-100 text-gray-800 font-semibold
-                py-2 px-5 rounded-full border border-gray-300 transition">
-        <i class="fas fa-download"></i>
-        {% if request.LANGUAGE_CODE == 'es' %}Descargar CV{% else %}Download CV{% endif %}
-      </a>
-    </div>
+    <section>
+      <span class="eyebrow">{% if request.LANGUAGE_CODE == 'es' %}Perfil{% else %}Profile{% endif %}</span>
+      <div class="split sticky-aside" style="margin-top:1.75rem">
+
+        <aside>
+          <img class="avatar" src="{% static 'images/2.png' %}" alt="Alejandro Cuevas González">
+          <dl class="defs" style="margin-top:1.5rem">
+            <div class="def"><dt>{% if request.LANGUAGE_CODE == 'es' %}Rol{% else %}Role{% endif %}</dt><dd>Full Stack Developer</dd></div>
+            <div class="def"><dt>{% if request.LANGUAGE_CODE == 'es' %}Base{% else %}Based{% endif %}</dt><dd>Trinidad, Cuba</dd></div>
+            <div class="def"><dt>{% if request.LANGUAGE_CODE == 'es' %}Idiomas{% else %}Languages{% endif %}</dt><dd>{% if request.LANGUAGE_CODE == 'es' %}Español (nativo), Inglés (A2–B1){% else %}Spanish (native), English (A2–B1){% endif %}</dd></div>
+            <div class="def"><dt>GitHub</dt><dd><a href="https://github.com/alejcuevas97" target="_blank" rel="noopener" style="color:var(--accent)">alejcuevas97</a> · Pull Shark · YOLO</dd></div>
+          </dl>
+        </aside>
+
+        <div>
+          <h1 style="font-size:var(--step-3)">Alejandro Cuevas González</h1>
+          <div class="prose" style="margin-top:1.25rem">
+            <p>
+              {% if request.LANGUAGE_CODE == 'es' %}
+                Soy desarrollador full stack con especialización backend. Diseño APIs REST en Python
+                (Django / Django REST Framework, FastAPI) y construyo las interfaces React que las
+                consumen, optimizando bases de datos relacionales y desplegando en la nube con
+                pipelines CI/CD.
+              {% else %}
+                I'm a full stack developer with a backend focus. I design REST APIs in Python
+                (Django / Django REST Framework, FastAPI) and build the React interfaces that
+                consume them, optimizing relational databases and deploying to the cloud with
+                CI/CD pipelines.
+              {% endif %}
+            </p>
+            <p>
+              {% if request.LANGUAGE_CODE == 'es' %}
+                Actualmente combino trabajo backend por contrato con el rol de fundador y responsable
+                técnico (CTO) de <a href="https://patinpay.cl" target="_blank" rel="noopener" style="color:var(--accent)">PatinPay</a>,
+                una plataforma SaaS de venta de entradas y transmisiones que llevé de cero a producción.
+              {% else %}
+                I currently combine contract backend work with the role of founder and technical lead
+                (CTO) of <a href="https://patinpay.cl" target="_blank" rel="noopener" style="color:var(--accent)">PatinPay</a>,
+                a ticketing and streaming SaaS I took from zero to production.
+              {% endif %}
+            </p>
+            <p>
+              {% if request.LANGUAGE_CODE == 'es' %}
+                Soy Ingeniero Industrial de formación, y antes del software pasé más de diez años como
+                técnico en sistemas eléctricos y electrónicos. Esa base me dejó una forma de trabajar
+                orientada a procesos: analizar el fallo, encontrar el cuello de botella, documentar la
+                solución.
+              {% else %}
+                I'm an Industrial Engineer by training, and before software I spent over ten years as
+                an electrical and electronic systems technician. That background left me a
+                process-oriented way of working: analyze the failure, find the bottleneck, document
+                the fix.
+              {% endif %}
+            </p>
+          </div>
+
+          <div class="actions" style="margin-top:2rem">
+            <a class="btn" href="{% url 'about' %}">{% if request.LANGUAGE_CODE == 'es' %}Habilidades y experiencia{% else %}Skills & experience{% endif %}</a>
+            <a class="btn-ghost" href="{% url 'contact' %}">{% if request.LANGUAGE_CODE == 'es' %}Contacto{% else %}Get in touch{% endif %}</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
   </div>
-
-  <div class="md:w-1/2 flex justify-center">
-    <img src="{% static 'images/2.png' %}" alt="Alejandro Cuevas González"
-         class="w-64 h-64 sm:w-80 sm:h-80 rounded-full">
-  </div>
-</section>
-
-<footer class="bg-gray-100 px-6 sm:px-10 md:px-16 py-6 text-center">
-  <p class="text-gray-700 text-sm">
-    © 2026 Alejandro Cuevas González | Full Stack Developer | Trinidad, Cuba
-  </p>
-</footer>
+</div>
 {% endblock content %}

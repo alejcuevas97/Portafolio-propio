@@ -1,106 +1,75 @@
 {% extends 'base.html' %}
 {% load static i18n %}
+
+{% block title %}{% if request.LANGUAGE_CODE == 'es' %}Currículum{% else %}Resume{% endif %} — Alejandro Cuevas{% endblock title %}
+
 {% block content %}
+<div class="page">
+  <div class="wrap" style="max-width:46rem">
 
-<div class="min-h-screen flex flex-col bg-gray-100">
-  <main class="flex-grow w-full flex items-center justify-center px-4 sm:px-6 md:px-10 py-12">
-    <article class="bg-white shadow-xl rounded-xl max-w-4xl w-full p-6 sm:p-10">
-      <header class="text-center mb-6">
-        <h1 class="text-2xl sm:text-3xl font-bold">Alejandro Cuevas González</h1>
-        <p class="text-gray-600 mt-1">Full Stack Developer — Python/Django · React</p>
-        <p class="text-gray-500 text-sm mt-1">Trinidad, Cuba · alejcuevas97@gmail.com</p>
-      </header>
+    <section>
+      <span class="eyebrow">{% if request.LANGUAGE_CODE == 'es' %}Currículum{% else %}Resume{% endif %}</span>
+      <h1 style="font-size:var(--step-3);margin-top:1rem">
+        {% if request.LANGUAGE_CODE == 'es' %}El CV en una página.{% else %}The one-page CV.{% endif %}
+      </h1>
 
-      <div class="space-y-6">
-        <p class="text-justify leading-relaxed text-base sm:text-lg">
-        {% if request.LANGUAGE_CODE == 'es' %}
-        Desarrollador full stack con especialización backend: diseño APIs en Python (Django/DRF, FastAPI)
-        y construyo las interfaces React que las consumen, optimizando bases de datos relacionales
-        (PostgreSQL, MySQL) y desplegando en la nube con pipelines CI/CD. Actualmente combino trabajo
-        backend por contrato con el rol de Fundador y responsable técnico de PatinPay, una plataforma
-        propia de venta de entradas, tienda y transmisiones que llevé de cero a producción: backend,
-        frontend, integraciones de pago y despliegue. Ingeniero Industrial de formación, aporto pensamiento
-        analítico y orientación a procesos. Nivel de inglés básico-intermedio (A2-B1) en progreso activo.
-        Disponible para roles remotos, freelance o contrato.
-        {% else %}
-        Full stack developer with a backend focus: I design APIs in Python (Django/DRF, FastAPI) and build
-        the React interfaces that consume them, optimizing relational databases (PostgreSQL, MySQL) and
-        deploying to the cloud with CI/CD pipelines. I currently combine contract backend work with the
-        role of Founder and technical lead of PatinPay, my own ticketing, store and streaming platform,
-        which I took from zero to production: backend, frontend, payment integrations and deployment. An
-        Industrial Engineer by training, I bring analytical thinking and a process-oriented mindset.
-        Basic-intermediate English (A2-B1), actively improving. Available for remote, freelance or contract roles.
-        {% endif %}
+      <div class="prose" style="margin-top:1.25rem;max-width:none">
+        <p>
+          {% if request.LANGUAGE_CODE == 'es' %}
+            Desarrollador full stack con especialización backend. Diseño APIs REST en Python
+            (Django / DRF, FastAPI) y construyo las interfaces React que las consumen, optimizando
+            bases de datos relacionales y desplegando en la nube con pipelines CI/CD. Combino trabajo
+            backend por contrato con el rol de fundador y responsable técnico (CTO) de PatinPay,
+            plataforma que llevé de cero a producción.
+          {% else %}
+            Full stack developer with a backend focus. I design REST APIs in Python (Django / DRF,
+            FastAPI) and build the React interfaces that consume them, optimizing relational databases
+            and deploying to the cloud with CI/CD pipelines. I combine contract backend work with the
+            role of founder and technical lead (CTO) of PatinPay, a platform I took from zero to
+            production.
+          {% endif %}
         </p>
-
-        <div class="flex justify-center">
-          <a href="{% static 'cv/CV_Alejandro_Cuevas_Gonzalez.pdf' %}" download
-             class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold
-                    py-3 px-6 rounded-full transition">
-            <i class="fas fa-file-pdf"></i>
-            {% if request.LANGUAGE_CODE == 'es' %}Descargar CV (PDF){% else %}Download CV (PDF){% endif %}
-          </a>
-        </div>
       </div>
 
-      <hr class="my-8 border-gray-200">
+      <div class="actions" style="margin-top:1.75rem">
+        <a class="btn" href="{% static 'cv/CV_Alejandro_Cuevas_Gonzalez.pdf' %}" download>
+          {% if request.LANGUAGE_CODE == 'es' %}Descargar CV (PDF){% else %}Download CV (PDF){% endif %}
+        </a>
+        <button class="btn-ghost no-print" type="button" onclick="window.print()">
+          {% if request.LANGUAGE_CODE == 'es' %}Imprimir esta página{% else %}Print this page{% endif %}
+        </button>
+      </div>
+    </section>
 
-      <section class="space-y-6">
-        <h2 class="text-xl font-bold">{% if request.LANGUAGE_CODE == 'es' %}Experiencia{% else %}Experience{% endif %}</h2>
+    <section data-reveal>
+      <div class="section-head">
+        <span class="eyebrow">{% if request.LANGUAGE_CODE == 'es' %}En resumen{% else %}At a glance{% endif %}</span>
+      </div>
+      <dl class="defs" data-reveal-stagger>
+        <div class="def"><dt>{% if request.LANGUAGE_CODE == 'es' %}Disponibilidad{% else %}Availability{% endif %}</dt><dd>{% if request.LANGUAGE_CODE == 'es' %}Remoto · freelance · contrato{% else %}Remote · freelance · contract{% endif %}</dd></div>
+        <div class="def"><dt>{% if request.LANGUAGE_CODE == 'es' %}Ubicación{% else %}Location{% endif %}</dt><dd>Trinidad, Cuba (UTC−5)</dd></div>
+        <div class="def"><dt>{% if request.LANGUAGE_CODE == 'es' %}Idiomas{% else %}Languages{% endif %}</dt><dd>{% if request.LANGUAGE_CODE == 'es' %}Español (nativo) · Inglés (A2–B1){% else %}Spanish (native) · English (A2–B1){% endif %}</dd></div>
+        <div class="def"><dt>{% if request.LANGUAGE_CODE == 'es' %}Formación{% else %}Education{% endif %}</dt><dd>{% if request.LANGUAGE_CODE == 'es' %}Ingeniería Industrial — Universidad José Martí (2025){% else %}Industrial Engineering — José Martí University (2025){% endif %}</dd></div>
+        <div class="def"><dt>{% if request.LANGUAGE_CODE == 'es' %}Ahora{% else %}Now{% endif %}</dt><dd><span style="color:var(--accent)">PatinPay</span> — {% if request.LANGUAGE_CODE == 'es' %}Fundador / CTO{% else %}Founder / CTO{% endif %}</dd></div>
+      </dl>
+    </section>
 
-        <div>
-          <div class="flex flex-wrap justify-between gap-2">
-            <span class="font-bold text-gray-800">
-              {% if request.LANGUAGE_CODE == 'es' %}Fundador y Responsable Técnico (CTO) — PatinPay{% else %}Founder & Technical Lead (CTO) — PatinPay{% endif %}
-            </span>
-            <span class="text-gray-500 text-sm">2026 – {% if request.LANGUAGE_CODE == 'es' %}Presente{% else %}Present{% endif %}</span>
-          </div>
-          <ul class="list-disc list-inside mt-2 space-y-1 text-gray-700">
-            <li>{% if request.LANGUAGE_CODE == 'es' %}Llevé en solitario de cero a producción una plataforma SaaS de gestión de eventos: venta de entradas, tienda, rifas, transmisiones en vivo y validación de accesos por QR.{% else %}Solo-built and shipped to production an event-management SaaS: ticketing, store, raffles, live streaming and QR access validation.{% endif %}</li>
-            <li>{% if request.LANGUAGE_CODE == 'es' %}Backend en Django REST Framework: API REST de ~70 endpoints, autenticación JWT con roles (admin/organizador/validador) y documentación OpenAPI/Swagger.{% else %}Django REST Framework backend: ~70-endpoint REST API, role-based JWT auth (admin/organizer/validator) and OpenAPI/Swagger docs.{% endif %}</li>
-            <li>{% if request.LANGUAGE_CODE == 'es' %}Frontend en React (Vite, Tailwind, PWA): carrito y checkout, escáner de QR con cámara, reproductor de video en vivo (LiveKit) y exportación de reportes a PDF/Excel.{% else %}React frontend (Vite, Tailwind, PWA): cart and checkout, camera QR scanner, live video player (LiveKit) and PDF/Excel report export.{% endif %}</li>
-            <li>{% if request.LANGUAGE_CODE == 'es' %}Integré pagos con Transbank Webpay (incluidos webhooks), streaming con LiveKit y OAuth con Twitch; despliegue con API y frontend separados, dominio propio y Cloudflare.{% else %}Integrated Transbank Webpay payments (webhooks included), LiveKit streaming and Twitch OAuth; deployed with a split API/frontend setup, custom domain and Cloudflare.{% endif %}</li>
-          </ul>
-        </div>
+    <section data-reveal>
+      <div class="card">
+        <p class="muted" style="margin:0">
+          {% if request.LANGUAGE_CODE == 'es' %}
+            La experiencia detallada, el stack completo y la formación están en
+            <a href="{% url 'about' %}" style="color:var(--accent)">Sobre mí</a>,
+            y los proyectos en <a href="{% url 'projects' %}" style="color:var(--accent)">Proyectos</a>.
+          {% else %}
+            Detailed experience, the full stack and education live in
+            <a href="{% url 'about' %}" style="color:var(--accent)">About</a>,
+            and the work in <a href="{% url 'projects' %}" style="color:var(--accent)">Projects</a>.
+          {% endif %}
+        </p>
+      </div>
+    </section>
 
-        <div>
-          <div class="flex flex-wrap justify-between gap-2">
-            <span class="font-bold text-gray-800">
-              {% if request.LANGUAGE_CODE == 'es' %}Backend Developer (freelance / contrato){% else %}Backend Developer (freelance / contract){% endif %}
-            </span>
-            <span class="text-gray-500 text-sm">2025 – {% if request.LANGUAGE_CODE == 'es' %}Presente{% else %}Present{% endif %}</span>
-          </div>
-          <ul class="list-disc list-inside mt-2 space-y-1 text-gray-700">
-            <li>{% if request.LANGUAGE_CODE == 'es' %}Diseñé y desplegué APIs RESTful con Django y FastAPI para aplicaciones internas.{% else %}Designed and deployed RESTful APIs with Django and FastAPI for internal applications.{% endif %}</li>
-            <li>{% if request.LANGUAGE_CODE == 'es' %}Optimicé consultas y estructura de bases de datos (PostgreSQL, MySQL), reduciendo un 30% el tiempo de respuesta de las consultas más críticas.{% else %}Optimized queries and database structure (PostgreSQL, MySQL), cutting response time of the most critical queries by 30%.{% endif %}</li>
-            <li>{% if request.LANGUAGE_CODE == 'es' %}Automaticé la generación de informes, reduciendo un 40% las horas manuales del equipo.{% else %}Automated report generation, reducing the team's manual hours by 40%.{% endif %}</li>
-          </ul>
-        </div>
-      </section>
-
-      <hr class="my-8 border-gray-200">
-
-      <section class="grid gap-6 sm:grid-cols-2">
-        <div>
-          <h2 class="text-xl font-bold mb-2">{% if request.LANGUAGE_CODE == 'es' %}Formación{% else %}Education{% endif %}</h2>
-          <p class="text-gray-700">{% if request.LANGUAGE_CODE == 'es' %}Ingeniería Industrial — Universidad José Martí (Graduado 2025){% else %}Industrial Engineering — José Martí University (Graduated 2025){% endif %}</p>
-        </div>
-        <div>
-          <h2 class="text-xl font-bold mb-2">{% if request.LANGUAGE_CODE == 'es' %}Idiomas{% else %}Languages{% endif %}</h2>
-          <ul class="text-gray-700 space-y-1">
-            <li>{% if request.LANGUAGE_CODE == 'es' %}Español — Nativo{% else %}Spanish — Native{% endif %}</li>
-            <li>{% if request.LANGUAGE_CODE == 'es' %}Inglés — Básico-Intermedio (A2-B1), en progreso{% else %}English — Basic-Intermediate (A2-B1), in progress{% endif %}</li>
-          </ul>
-        </div>
-      </section>
-
-      <footer class="mt-8 text-center text-gray-500 text-sm">
-        <a href="https://github.com/alejcuevas97" target="_blank" class="hover:text-blue-600">github.com/alejcuevas97</a>
-        ·
-        <a href="https://www.linkedin.com/in/alejandro-cuevas-22340b124" target="_blank" class="hover:text-blue-600">LinkedIn</a>
-      </footer>
-    </article>
-  </main>
+  </div>
 </div>
-
 {% endblock content %}
