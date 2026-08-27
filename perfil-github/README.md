@@ -1,14 +1,12 @@
 <!--
-  ╔══════════════════════════════════════════════════════════════════╗
-  ║  README de perfil de GitHub  ·  diseno ligado al portafolio       ║
-  ║  Repo publico: github.com/alejcuevas97/alejcuevas97  ->  README.md ║
-  ║  Necesita las carpetas  assets/  y  .github/  (ver INSTRUCCIONES) ║
-  ╚══════════════════════════════════════════════════════════════════╝
+  Repo publico: github.com/alejcuevas97/alejcuevas97  ->  README.md
+  Los workflows de .github/ generan metrics.svg (main) y la serpiente (rama output).
+  Ver INSTRUCCIONES.md para editar y mantener.
 -->
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/alejcuevas97/alejcuevas97/main/assets/header.svg" alt="Alejandro Cuevas Gonzalez - Full Stack Developer" width="880" />
-</p>
+<h2 align="center">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=26&pause=1200&color=2563EB&center=true&vCenter=true&width=720&lines=Hola%2C%20soy%20Alejandro%20Cuevas%20Gonz%C3%A1lez%20%F0%9F%91%8B;Full%20Stack%20Developer%20con%20enfoque%20backend;APIs%20en%20Django%20%2F%20DRF%20%2F%20FastAPI%20%2B%20React;Fundador%20%26%20CTO%20de%20PatinPay%20%E2%80%94%20de%20cero%20a%20producci%C3%B3n" alt="Alejandro Cuevas Gonzalez" />
+</h2>
 
 <p align="center">
   <a href="https://portafolio-propio.onrender.com"><img src="https://img.shields.io/badge/Portafolio-2563EB?style=flat-square&logo=firefoxbrowser&logoColor=white" alt="Portafolio" /></a>&nbsp;

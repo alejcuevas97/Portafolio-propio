@@ -236,54 +236,41 @@ main { flex: 1 0 auto; }
 :root[data-theme="dark"] .hero::before { opacity: .24; }
 .hero > * { position: relative; z-index: 1; }
 
-.hero .wrap { display: grid; gap: 2.75rem 3.25rem; align-items: center; }
-@media (min-width: 62rem) { .hero .wrap { grid-template-columns: 1.05fr .95fr; } }
-.hero-lead { min-width: 0; }
-.hero h1 { font-size: var(--hero); font-weight: 500; margin-top: 1.3rem; max-width: 16ch; }
-.hero .lede { margin-top: 1.4rem; max-width: 44ch; font-size: clamp(1.08rem, 2.4vw, 1.34rem); }
-.hero .actions { margin-top: 2.1rem; }
+.hero { padding-block: clamp(3.5rem, 15vw, 8rem); }
+.hero h1 { font-size: var(--hero); font-weight: 500; margin-top: 1.5rem; max-width: 20ch; }
+.hero .lede { margin-top: 1.6rem; max-width: 46ch; font-size: clamp(1.1rem, 2.5vw, 1.42rem); }
+.hero .actions { margin-top: 2.5rem; }
 
-.hero-meta {
-  margin-top: 2.75rem; padding-top: 1.4rem;
-  border-top: 1px solid var(--line);
-  display: flex; flex-wrap: wrap; gap: 1.2rem 2.25rem;
-}
-.hero-meta div { display: grid; gap: .1rem; }
-.hero-meta b { font-family: var(--font-display); font-weight: 500; color: var(--ink); font-size: 1.4rem; letter-spacing: -.02em; }
-.hero-meta span { font-family: var(--font-mono); font-size: var(--step--1); color: var(--faint); }
-
-/* Panel de especificación — el CV destilado en algo escaneable */
-.spec {
-  font-family: var(--font-mono);
-  font-size: .82rem;
-  line-height: 1.75;
+/* ---- Featured module ---------------------------------- */
+.featured {
+  display: grid;
+  gap: 1.1rem;
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius);
+  padding: clamp(1.6rem, 5vw, 3rem);
   box-shadow: var(--shadow);
-  overflow: hidden;
+  transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease;
 }
-.spec-head {
-  display: flex; align-items: center; gap: .55rem;
-  padding: .62rem .95rem;
-  border-bottom: 1px solid var(--line);
-  color: var(--faint);
-  font-size: .72rem; letter-spacing: .03em;
+.featured:hover {
+  border-color: var(--line-strong);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 34px -16px rgba(20, 19, 15, .22), var(--shadow);
 }
-.spec-head::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); opacity: .75; }
-.spec-body { padding: 1.05rem 1.15rem 1.2rem; display: grid; gap: 1.05rem; }
-.spec-group { display: grid; gap: .12rem; }
-.spec-label {
-  display: flex; align-items: center; gap: .65rem;
-  color: var(--faint); text-transform: uppercase; letter-spacing: .1em;
-  font-size: .67rem; margin-bottom: .3rem;
+:root[data-theme="dark"] .featured:hover { box-shadow: 0 12px 40px -18px rgba(0, 0, 0, .75); }
+.featured-top {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 1rem;
+  font-family: var(--font-mono); font-size: var(--step--1); color: var(--faint);
+  padding-bottom: 1rem; border-bottom: 1px solid var(--line);
 }
-.spec-label::after { content: ""; flex: 1; height: 1px; background: var(--line); }
-.spec-row { display: grid; grid-template-columns: 5rem 1fr; gap: .9rem; }
-.spec-row dt { color: var(--faint); }
-.spec-row dd { color: var(--ink); }
-.spec .on { color: var(--accent); }
-@media (max-width: 24rem) { .spec-row { grid-template-columns: 1fr; gap: 0; } }
+.featured-top .link { color: var(--accent); }
+.featured h2 {
+  font-family: var(--font-display); font-weight: 500;
+  font-size: clamp(2rem, 5.5vw, 3rem); letter-spacing: -.025em; line-height: 1.05;
+}
+.featured p { color: var(--muted); max-width: 54ch; }
+.featured-tech { font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink); }
+.featured-tech span { color: var(--faint); }
 
 /* ---- Cards --------------------------------------------------- */
 .card {

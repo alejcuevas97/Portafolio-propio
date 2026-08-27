@@ -20,12 +20,13 @@ jobs:
       - name: Generar metrics.svg
         uses: lowlighter/metrics@latest
         with:
-          # PAT guardado como secret del repo (ver INSTRUCCIONES.md)
-          token: ${{ secrets.METRICS_TOKEN }}
+          # Usa el PAT METRICS_TOKEN si existe; si no, el token automatico del repo.
+          # Con el automatico funciona igual para datos publicos (basta para este README).
+          token: ${{ secrets.METRICS_TOKEN || secrets.GITHUB_TOKEN }}
           user: alejcuevas97
           filename: metrics.svg
           template: classic
-          base: header, activity, community, repositories, metadata
+          base: header, activity, repositories
           config_timezone: America/Havana
 
           plugin_languages: yes
