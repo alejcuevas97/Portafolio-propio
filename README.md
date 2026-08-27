@@ -1,6 +1,6 @@
 ﻿# 🎯 Portafolio Personal
 
-Portafolio personal desarrollado con Django para mostrar habilidades, experiencia y proyectos como Ingeniero Industrial y Desarrollador Backend. Incluye secciones de información personal, habilidades técnicas, currículum, contacto y certificaciones. Está construido con una arquitectura basada en principios SOLID para mantener el código limpio y escalable.
+Portafolio personal desarrollado con Django para mostrar habilidades, experiencia y proyectos como Full Stack Developer (Python/Django · React) e Ingeniero Industrial. Incluye secciones de información personal, habilidades técnicas, currículum, contacto y certificaciones. Está construido con una arquitectura basada en principios SOLID para mantener el código limpio y escalable.
 
 ## Enlace de Portfolio
 https://portafolio-propio.onrender.com
@@ -43,9 +43,10 @@ https://portafolio-propio.onrender.com
 - Serializers preparados para API REST
 - Soporte de recarga en caliente durante desarrollo con `django-browser-reload`
 
-### API REST (Preparada)
-- Serializers creados para operaciones de lista y detalle de proyectos
-- El proyecto está preparado para exponer endpoints adicionales de API en el futuro
+### API REST
+- `GET /api/projects/` y `GET /api/certifications/` (solo lectura, paginados)
+- Autenticación JWT: `POST /api/auth/token/` y `POST /api/auth/token/refresh/`
+- Navegable en el navegador cuando `DEBUG=True`
 
 ## 🔧 Instalación
 
@@ -74,21 +75,26 @@ https://portafolio-propio.onrender.com
    pip install -r requirements.txt
    ```
 
-4. **Instala dependencias de Node.js:**
+4. **Instala dependencias de Node.js y compila CSS:**
    ```bash
    npm install
+   npm run build:css
    ```
 
 5. **Configura variables de entorno (.env):**
-   Crea un archivo `.env` en la raíz del proyecto con:
+   Copia `.env.example` a `.env` en la raíz del proyecto y ajústalo. Todas las
+   variables tienen valores por defecto para desarrollo local:
+   - Sin `DATABASE_URL` → usa SQLite (`db.sqlite3`).
+   - Sin credenciales `CLOUDINARY_*` → los archivos subidos se guardan en disco local.
+
    ```env
    DEBUG=True
    SECRET_KEY=tu_clave_secreta_aqui
-   DATABASE_URL=sqlite:///db.sqlite3
-   ALLOWED_HOSTS=localhost,127.0.0.1
-   CLOUDINARY_CLOUD_NAME=tu_cloud_name
-   CLOUDINARY_API_KEY=tu_api_key
-   CLOUDINARY_API_SECRET=tu_api_secret
+   # DATABASE_URL=postgresql://usuario:clave@host:5432/basedatos
+   # DATABASE_REQUIRE_SSL=True
+   # CLOUDINARY_CLOUD_NAME=tu_cloud_name
+   # CLOUDINARY_API_KEY=tu_api_key
+   # CLOUDINARY_API_SECRET=tu_api_secret
    ```
 
 6. **Ejecuta migraciones:**
@@ -144,6 +150,7 @@ Portafolio/
 - Ver certificaciones en `/certificaciones/`
 - Cambiar idioma con los botones `ES`/`EN` en la navegación
 - Acceder al panel administrativo en `/config/`
+- Consumir la API en `/api/projects/` y `/api/certifications/`
 - Agregar proyectos y certificaciones desde el backend admin
 
 ## 🤝 Contribución

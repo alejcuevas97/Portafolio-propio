@@ -1,118 +1,186 @@
 {% extends 'base.html' %}
-
 {% load static i18n %}
 
-
 {% block content %}
+<div class="min-h-screen bg-gray-100 py-10 sm:py-14">
+  <div class="max-w-6xl mx-auto px-4">
 
-<head>
-  <!-- Tailwind CSS CDN with Dark Mode Configuration -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    // Configure Tailwind to use class-based dark mode
-    tailwind.config = {
-      darkMode: 'class', // Enable class-based dark mode
-      theme: {
-        extend: {
-          fontFamily: {
-            poppins: ['Poppins', 'sans-serif'],
-          },
-        },
-      },
-    }
-  </script>
-  <!-- Optional: Include Font Awesome for Icons -->
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-</head>
-  <div class="min-h-screen flex flex-col">
-    <!-- Header Section -->
-<!-- Navigation -->
-        <nav>
-        
-<div class="bg-gray-100">
-        <div class="grid grid-cols-4 sm:grid-cols-12 gap-6 px-4">
-            <div class="col-span-6 sm:col-span-3">
-                <div class="bg-white shadow rounded-lg p-11">
-                    <div class="flex flex-col items-center">
-                        <img src="{%static 'images/2.png'%}" class="w-32 h-32 bg-gray-300 rounded-full mb-4 shrink-0">
-                        <h1 class="text-xl font-bold"></h1>
-                            
-                        <div class="mt-6 flex flex-wrap gap-4 justify-center">
-                            <a href="{%url 'resume'%}" class="bg-gray-300 hover:bg-gray-400 text-gray-700 py-2 px-4 rounded">{% if request.LANGUAGE_CODE == 'es' %}Resumen{% else %}Summary{% endif %}</a>
-                        </div>
-                    </div>
-                    <hr class="my-6 border-t border-gray-300">
-                    <div class="flex flex-col">
-                        <span class="text-gray-700 uppercase font-bold tracking-wider mb-2">{% if request.LANGUAGE_CODE == 'es' %}Antecedentes académicos{% else %}Academic background{% endif %}</span>
-                        <ul>
-                        <li class="mb-2">{% if request.LANGUAGE_CODE == 'es' %}• Ingeniería Industrial - Universidad Central "Marta Abreu" de Las Villas / Universidad José Martí Pérez, Sancti Spíritus.{% else %}• Industrial Engineering - Central University "Marta Abreu" of Las Villas / José Martí Pérez University, Sancti Spíritus.{% endif %}
-                        </ul>
-                            <span class="text-gray-700 uppercase font-bold tracking-wider mb-2">{% if request.LANGUAGE_CODE == 'es' %}Logros{% else %}Achievements{% endif %}</span>
-                            <ul>
-                                <li class="mb-2 flex items-center gap-2">
-                                <img src="https://github.githubassets.com/images/modules/profile/achievements/pull-shark-default.png" 
-                                alt="Pull Shark" class="w-8 h-8">
-                                <span>Pull Shark</span>
-                                </li>
-                                <li class="mb-2 flex items-center gap-2">
-                                <img src="https://github.githubassets.com/images/modules/profile/achievements/yolo-default.png" 
-                                alt="YOLO" class="w-8 h-8">
-                                <span>YOLO</span>
-                                </li>
-                            </ul>
-                        </div>
-                </div>
-            </div>
-            <div class="col-span-6 sm:col-span-9">
-                <div class="bg-white shadow rounded-lg p-8">
-                    <h2 class="text-xl font-bold mb-4">{% if request.LANGUAGE_CODE == 'es' %}🔧 HABILIDADES TÉCNICAS{% else %}🔧 TECHNICAL SKILLS{% endif %}</h2>
-                    <p class="text-gray-700">
-                            <li class="mb-2">{% if request.LANGUAGE_CODE == 'es' %}Lenguajes de programación: Python.{% else %}Programming languages: Python.{% endif %}</li>
-                            <li class="mb-2">{% if request.LANGUAGE_CODE == 'es' %}Frameworks: Django, FastAPI.{% else %}Frameworks: Django, FastAPI.{% endif %}</li>
-                            <li class="mb-2">{% if request.LANGUAGE_CODE == 'es' %}Bases de datos: PostgreSQL, MySQL.{% else %}Database: PostgreSQL, MySQL.{% endif %}</li>
-                            <li class="mb-2">{% if request.LANGUAGE_CODE == 'es' %}Herramientas y plataformas: Git, GitHub, Docker, REST APIs, Postman.{% else %}Tools and Platforms: Git, GitHub, Docker, REST APIs, Postman.{% endif %}</li>
-                            <li class="mb-2">{% if request.LANGUAGE_CODE == 'es' %}Conocimientos: Sistemas eléctricos, reparación de equipos electrónicos, diagnóstico y automatización industrial.{% else %}Domain Knowledge: Electrical Systems, Electronic Repair and Diagnostics, Industrial Automation.{% endif %}</li>
-                            <li class="mb-2">{% if request.LANGUAGE_CODE == 'es' %}Certificaciones: Desarrollo asistido por IA (Brais Moure - 2026), "Master en Diseño Web con Inteligencia Artificial"(Udemy-2026), "SQL: Creación de Bases de Datos (De cero a profesional)"(Udemy-2026), "Desarrollo Full Stack con Python y Django: Construye una Aplicación Web Moderna"(Udemy-2026).{% else %}Certifications: AI-Aided Development (Brais Moure - 2026), "Master in Web Design with Artificial Intelligence"(Udemy-2026), "SQL: Database Creation (From Zero to Professional)"(Udemy-2026), "Python Django Full Stack Development: Build Modern Web App"(Udemy-2026).{% endif %}</li>
-                            <li class="mb-2">{% if request.LANGUAGE_CODE == 'es' %}Desarrollo web: Backend, REST APIs, integración de servicios.{% else %}Web development: Backend, REST APIs, service integration.{% endif %}</li>
-                            <li class="mb-2">{% if request.LANGUAGE_CODE == 'es' %}Ingeniería industrial: análisis de procesos, mejora continua, gestión de proyectos.{% else %}Industrial engineering: process analysis, continuous improvement, project management.{% endif %}</li>
-                  
-                    </p>
+    <header class="mb-8">
+      <h1 class="text-2xl sm:text-3xl font-bold text-gray-900">
+        {% if request.LANGUAGE_CODE == 'es' %}Sobre mí{% else %}About me{% endif %}
+      </h1>
+      <p class="mt-1 text-gray-600">Full Stack Developer — Python/Django · React</p>
+    </header>
 
+    <div class="flex flex-col lg:flex-row gap-6 lg:items-stretch">
 
-                    <h2 class="text-xl font-bold mt-6 mb-4">{% if request.LANGUAGE_CODE == 'es' %}EXPERIENCIA{% else %}EXPERIENCE{% endif %}</h2>
-                    <div class="mb-9">
-                        <div class="flex justify-between flex-wrap gap-2 w-full">
-                            <span class="text-gray-700 font-bold">{% if request.LANGUAGE_CODE == 'es' %}Desarrollador Backend - Freelance 2025-Presente{% else %}Backend Developer - Freelance 2025-Present{% endif %}</span>
-                        </div>
-                        <p class="mt-2">
-                            <li class="mb-2">{% if request.LANGUAGE_CODE == 'es' %}Diseñó y desplegó APIs RESTful usando Django para clientes del sector privado.{% else %}He designed and deployed RESTful APIs using Django for private sector clients.{% endif %}</li>
-                            <li class="mb-2">{% if request.LANGUAGE_CODE == 'es' %}Gestionó bases de datos relacionales (PostgreSQL, MySQL) incluyendo diseño de esquemas y optimización de consultas.{% else %}Managed relational databases (PostgreSQL, MySQL) including schema design and query optimization.{% endif %}</li>
-                            <li class="mb-2">{% if request.LANGUAGE_CODE == 'es' %}Automatizó el procesamiento de datos y la generación de informes, reduciendo el trabajo manual.{% else %}It automated data processing and report generation workflows, reducing manual work.{% endif %}</li>
-                            
-                        </p>
-                    </div>
-                    <div class="mb-6">
-                        <div class="flex justify-between flex-wrap gap-2 w-full">
-                            <span class="text-gray-700 font-bold">{% if request.LANGUAGE_CODE == 'es' %}Técnico en electricidad y electrónica - Privado 2015-Presente{% else %}Electrical and Electronic Technician - Private 2015-Present{% endif %}</span>
-                            </div>
-                        <p class="mt-2">
-                            <li class="mb-2">{% if request.LANGUAGE_CODE == 'es' %}Más de 10 años de experiencia resolviendo problemas técnicos complejos y optimizando sistemas.{% else %}Over 10 years of experience solving complex technical problems and optimizing systems.{% endif %}</li>
-                            <li class="mb-2">{% if request.LANGUAGE_CODE == 'es' %}Especialización en diagnóstico y reparación de equipos electrónicos y eléctricos (televisores LCD/TRC, teléfonos, convertidores de potencia, computadoras).{% else %}Specialized in diagnosing and repairing electronic and electrical equipment (LCD/CRT televisions, phones, power converters, computers).{% endif %}</li>
-                            <li class="mb-2">{% if request.LANGUAGE_CODE == 'es' %}Desarrollo de protocolos sistemáticos de diagnóstico, reduciendo significativamente el tiempo promedio de resolución de incidencias.{% else %}Developed systematic diagnostic protocols, significantly reducing average incident resolution time.{% endif %}</li>
-                            <li class="mb-2">{% if request.LANGUAGE_CODE == 'es' %}Amplia práctica en análisis de fallos, identificación de cuellos de botella y aplicación de soluciones escalables.{% else %}Extensive practice in failure analysis, bottleneck identification, and implementation of scalable solutions.{% endif %}</li>
-                            <li class="mb-2">{% if request.LANGUAGE_CODE == 'es' %}Experiencia trabajando con clientes residenciales e industriales, adaptando soluciones a diferentes entornos y necesidades.{% else %}Experience working with both residential and industrial clients, adapting solutions to diverse environments and requirements.{% endif %}</li>
-                            <li class="mb-2">{% if request.LANGUAGE_CODE == 'es' %}Mentalidad orientada a la eficiencia y la calidad, con enfoque en la documentación clara de procesos y resultados.{% else %}Efficiency- and quality-driven mindset, with a strong focus on clear documentation of processes and outcomes.{% endif %}</li>
-                        </p>
-                    </div>
-                        <div class="flex justify-between flex-wrap gap-2 w-full">
-                        </div>
-                        </p>
-                    </div>
-                </div>
-            </div>
+      <!-- Profile card -->
+      <aside class="w-full lg:w-80 lg:shrink-0 bg-white border border-gray-200 rounded-2xl shadow-sm p-6 sm:p-8 flex flex-col">
+        <div class="flex flex-col items-center text-center">
+          <img src="{% static 'images/2.png' %}" alt="Alejandro Cuevas González"
+               class="w-28 h-28 rounded-full object-cover object-top shrink-0">
+          <h2 class="mt-4 text-lg font-bold text-gray-900">Alejandro Cuevas González</h2>
+          <p class="text-gray-500 text-sm">Full Stack Developer</p>
+          <p class="text-gray-500 text-sm">Trinidad, Cuba</p>
+
+          <div class="mt-5 grid grid-cols-2 gap-2 w-full">
+            <a href="{% url 'resume' %}"
+               class="inline-flex items-center justify-center text-sm py-2 px-3 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-100 transition-colors">
+              {% if request.LANGUAGE_CODE == 'es' %}Currículum{% else %}Resume{% endif %}
+            </a>
+            <a href="{% static 'cv/CV_Alejandro_Cuevas_Gonzalez.pdf' %}" download
+               class="inline-flex items-center justify-center gap-2 text-sm py-2 px-3 rounded-lg bg-blue-600 hover:bg-blue-700 text-white transition-colors">
+              <i class="fas fa-download"></i>
+              {% if request.LANGUAGE_CODE == 'es' %}CV{% else %}CV{% endif %}
+            </a>
+          </div>
         </div>
+
+        <div class="mt-8 space-y-6">
+          <div>
+            <h3 class="text-xs font-bold uppercase tracking-wider text-gray-500 pb-2 mb-3 border-b border-gray-200">
+              {% if request.LANGUAGE_CODE == 'es' %}Formación{% else %}Education{% endif %}
+            </h3>
+            <p class="text-sm text-gray-700">
+              {% if request.LANGUAGE_CODE == 'es' %}Ingeniería Industrial{% else %}Industrial Engineering{% endif %}
+            </p>
+            <p class="text-sm text-gray-500">
+              {% if request.LANGUAGE_CODE == 'es' %}Universidad José Martí · Graduado 2025{% else %}José Martí University · Graduated 2025{% endif %}
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-xs font-bold uppercase tracking-wider text-gray-500 pb-2 mb-3 border-b border-gray-200">
+              {% if request.LANGUAGE_CODE == 'es' %}Idiomas{% else %}Languages{% endif %}
+            </h3>
+            <ul class="text-sm text-gray-700 space-y-1">
+              <li>{% if request.LANGUAGE_CODE == 'es' %}Español — Nativo{% else %}Spanish — Native{% endif %}</li>
+              <li>{% if request.LANGUAGE_CODE == 'es' %}Inglés — A2-B1, en progreso{% else %}English — A2-B1, in progress{% endif %}</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-xs font-bold uppercase tracking-wider text-gray-500 pb-2 mb-3 border-b border-gray-200">
+              {% if request.LANGUAGE_CODE == 'es' %}Logros en GitHub{% else %}GitHub achievements{% endif %}
+            </h3>
+            <ul class="space-y-2">
+              <li class="flex items-center gap-2 text-sm text-gray-700">
+                <img src="https://github.githubassets.com/images/modules/profile/achievements/pull-shark-default.png"
+                     alt="Pull Shark" class="w-7 h-7">
+                <span>Pull Shark</span>
+              </li>
+              <li class="flex items-center gap-2 text-sm text-gray-700">
+                <img src="https://github.githubassets.com/images/modules/profile/achievements/yolo-default.png"
+                     alt="YOLO" class="w-7 h-7">
+                <span>YOLO</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mt-auto pt-6">
+          <div class="flex items-center justify-center gap-5 border-t border-gray-200 pt-5 text-gray-500">
+            <a href="https://github.com/alejcuevas97" target="_blank" rel="noopener" aria-label="GitHub" class="hover:text-blue-600 transition-colors">
+              <i class="fab fa-github text-xl"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/alejandro-cuevas-22340b124" target="_blank" rel="noopener" aria-label="LinkedIn" class="hover:text-blue-600 transition-colors">
+              <i class="fab fa-linkedin-in text-xl"></i>
+            </a>
+            <a href="{% url 'contact' %}" aria-label="{% if request.LANGUAGE_CODE == 'es' %}Contacto{% else %}Contact{% endif %}" class="hover:text-blue-600 transition-colors">
+              <i class="fas fa-envelope text-xl"></i>
+            </a>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Detail card -->
+      <div class="w-full bg-white border border-gray-200 rounded-2xl shadow-sm p-6 sm:p-8 space-y-10">
+
+        <section>
+          <h2 class="text-xs font-bold uppercase tracking-wider text-gray-500 pb-2 mb-4 border-b border-gray-200">
+            {% if request.LANGUAGE_CODE == 'es' %}Habilidades técnicas{% else %}Technical skills{% endif %}
+          </h2>
+          <div class="grid gap-3 sm:grid-cols-2">
+            <div>
+              <p class="text-sm font-semibold text-gray-900">Backend</p>
+              <p class="text-sm text-gray-600">Python, Django, Django REST Framework, FastAPI, JWT/OAuth2, OpenAPI/Swagger</p>
+            </div>
+            <div>
+              <p class="text-sm font-semibold text-gray-900">Frontend</p>
+              <p class="text-sm text-gray-600">React, React Router, Tailwind CSS, Vite, PWA, JavaScript</p>
+            </div>
+            <div>
+              <p class="text-sm font-semibold text-gray-900">{% if request.LANGUAGE_CODE == 'es' %}Bases de datos{% else %}Databases{% endif %}</p>
+              <p class="text-sm text-gray-600">PostgreSQL, MySQL</p>
+            </div>
+            <div>
+              <p class="text-sm font-semibold text-gray-900">{% if request.LANGUAGE_CODE == 'es' %}Herramientas{% else %}Tools{% endif %}</p>
+              <p class="text-sm text-gray-600">Git, GitHub, Docker, GitHub Actions, Postman, Cloudflare</p>
+            </div>
+            <div>
+              <p class="text-sm font-semibold text-gray-900">{% if request.LANGUAGE_CODE == 'es' %}Integraciones{% else %}Integrations{% endif %}</p>
+              <p class="text-sm text-gray-600">{% if request.LANGUAGE_CODE == 'es' %}Pasarelas de pago y webhooks, streaming de video (LiveKit), OAuth de terceros{% else %}Payment gateways and webhooks, video streaming (LiveKit), third-party OAuth{% endif %}</p>
+            </div>
+            <div>
+              <p class="text-sm font-semibold text-gray-900">{% if request.LANGUAGE_CODE == 'es' %}Ing. industrial{% else %}Industrial eng.{% endif %}</p>
+              <p class="text-sm text-gray-600">{% if request.LANGUAGE_CODE == 'es' %}Análisis de procesos, mejora continua, gestión de proyectos{% else %}Process analysis, continuous improvement, project management{% endif %}</p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2 class="text-xs font-bold uppercase tracking-wider text-gray-500 pb-2 mb-4 border-b border-gray-200">
+            {% if request.LANGUAGE_CODE == 'es' %}Experiencia{% else %}Experience{% endif %}
+          </h2>
+          <div class="space-y-6">
+
+            <div>
+              <div class="flex flex-wrap items-baseline justify-between gap-x-3">
+                <p class="font-semibold text-gray-900">
+                  {% if request.LANGUAGE_CODE == 'es' %}Fundador y Responsable Técnico (CTO) — PatinPay{% else %}Founder &amp; Technical Lead (CTO) — PatinPay{% endif %}
+                </p>
+                <span class="text-sm text-gray-500">2026 – {% if request.LANGUAGE_CODE == 'es' %}Presente{% else %}Present{% endif %}</span>
+              </div>
+              <p class="text-sm text-gray-500">patinpay.cl</p>
+              <ul class="list-disc list-outside pl-5 mt-2 space-y-1 text-sm text-gray-700">
+                <li>{% if request.LANGUAGE_CODE == 'es' %}Plataforma SaaS de gestión de eventos llevada de cero a producción en solitario: venta de entradas, tienda, rifas, transmisiones en vivo y validación de accesos por QR.{% else %}Event-management SaaS taken solo from zero to production: ticketing, store, raffles, live streaming and QR access validation.{% endif %}</li>
+                <li>{% if request.LANGUAGE_CODE == 'es' %}Backend en Django REST Framework: API de ~70 endpoints, autenticación JWT con roles, documentación OpenAPI/Swagger.{% else %}Django REST Framework backend: ~70-endpoint API, role-based JWT auth, OpenAPI/Swagger docs.{% endif %}</li>
+                <li>{% if request.LANGUAGE_CODE == 'es' %}Frontend en React (Vite, Tailwind, PWA): carrito y checkout, escáner de QR con cámara, reproductor de video en vivo y exportación de reportes.{% else %}React frontend (Vite, Tailwind, PWA): cart and checkout, camera QR scanner, live video player and report export.{% endif %}</li>
+                <li>{% if request.LANGUAGE_CODE == 'es' %}Integré pagos con Transbank Webpay (incluidos webhooks), streaming con LiveKit y OAuth con Twitch; despliegue con dominio propio y Cloudflare.{% else %}Integrated Transbank Webpay payments (webhooks included), LiveKit streaming and Twitch OAuth; deployed with a custom domain and Cloudflare.{% endif %}</li>
+              </ul>
+            </div>
+
+            <div>
+              <div class="flex flex-wrap items-baseline justify-between gap-x-3">
+                <p class="font-semibold text-gray-900">
+                  {% if request.LANGUAGE_CODE == 'es' %}Backend Developer (freelance / contrato){% else %}Backend Developer (freelance / contract){% endif %}
+                </p>
+                <span class="text-sm text-gray-500">2025 – {% if request.LANGUAGE_CODE == 'es' %}Presente{% else %}Present{% endif %}</span>
+              </div>
+              <ul class="list-disc list-outside pl-5 mt-2 space-y-1 text-sm text-gray-700">
+                <li>{% if request.LANGUAGE_CODE == 'es' %}Diseñé y desplegué APIs RESTful con Django y FastAPI para aplicaciones internas.{% else %}Designed and deployed RESTful APIs with Django and FastAPI for internal applications.{% endif %}</li>
+                <li>{% if request.LANGUAGE_CODE == 'es' %}Optimicé consultas y esquema de bases de datos (PostgreSQL, MySQL): -30% en tiempo de respuesta de las consultas críticas.{% else %}Optimized queries and database schema (PostgreSQL, MySQL): -30% response time on critical queries.{% endif %}</li>
+                <li>{% if request.LANGUAGE_CODE == 'es' %}Automaticé la generación de informes: -40% de horas manuales del equipo.{% else %}Automated report generation: -40% of the team's manual hours.{% endif %}</li>
+              </ul>
+            </div>
+
+            <div>
+              <div class="flex flex-wrap items-baseline justify-between gap-x-3">
+                <p class="font-semibold text-gray-900">
+                  {% if request.LANGUAGE_CODE == 'es' %}Técnico en sistemas eléctricos y electrónicos{% else %}Electrical &amp; electronic systems technician{% endif %}
+                </p>
+                <span class="text-sm text-gray-500">2015 – 2024</span>
+              </div>
+              <ul class="list-disc list-outside pl-5 mt-2 space-y-1 text-sm text-gray-700">
+                <li>{% if request.LANGUAGE_CODE == 'es' %}Más de 10 años resolviendo fallos complejos de hardware y optimizando procesos de diagnóstico para clientes residenciales e industriales.{% else %}10+ years solving complex hardware failures and streamlining diagnostic processes for residential and industrial clients.{% endif %}</li>
+              </ul>
+            </div>
+
+          </div>
+        </section>
+      </div>
+
     </div>
+  </div>
 </div>
-
-
 {% endblock content %}

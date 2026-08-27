@@ -52,13 +52,6 @@ class ContactView(BasePageView):
     page_title = 'Contacto'
 
 
-# === Compatibilidad hacia atrás ===
-# Nombres antiguos (deprecated) - mantener por compatibilidad
-class HomeViews(HomeView):
-    """DEPRECADA - usa HomeView en su lugar"""
-    pass      
-
-
 def set_language(request, language_code):
     """Cambia el idioma activo y redirige a la página anterior."""
     supported_languages = dict(settings.LANGUAGES)

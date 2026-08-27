@@ -4,7 +4,8 @@
   "description": "Este es un portafolio personal desarrollado con Django, diseñado para mostrar mis habilidades, experiencia y proyectos como Ingeniero Industrial y Desarrollador Backend. El sitio incluye secciones para información personal, habilidades técnicas, currículum y contacto. También cuenta con una API REST para gestionar proyectos.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:css": "tailwindcss -i ./src/input.css -o ./static/css/output.css --minify",
+    "watch:css": "tailwindcss -i ./src/input.css -o ./static/css/output.css --watch"
   },
   "repository": {
     "type": "git",

@@ -2,40 +2,51 @@
 {% load static i18n %}
 
 {% block content %}
+<section id="home"
+  class="relative min-h-screen flex flex-col-reverse md:flex-row items-center justify-between
+         gap-10 px-9 sm:px-10 md:px-12 py-12 bg-gray-200">
 
-    
-{% get_current_language as LANGUAGE_CODE %}
-<html lang="{{ LANGUAGE_CODE }}">
-<body class="relative min-h-screen flex flex-col">
-    <!-- Hero Section -->
-    <section id="home" 
-      class="flex-1 flex flex-col-reverse md:flex-row items-center justify-between 
-             px-9 sm:px-10 md:px-12 py-12 bg-gray-200 
-             h-screen md:h-auto">
-      
-      <div class="md:w-1/2">
-        <h1 class="text-3xl sm:text-4xl md:text-5xl font-semibold text-black mb-4">
-          {% if request.LANGUAGE_CODE == 'es' %}Hola, soy Alejandro Cuevas González{% else %}Hello, I'm Alejandro Cuevas González{% endif %}
-        </h1>
-        <p class="text-lg sm:text-xl md:text-2xl font-medium text-gray-600">
-          {% if request.LANGUAGE_CODE == 'es' %}Ingeniero Industrial y Desarrollador Backend especializado en APIs y optimización de procesos industriales con soluciones escalables.
-          {% else %}Industrial Engineer and Backend Developer specialized in APIs and optimization of industrial processes with scalable solutions.{% endif %}
-        </p> 
-      </div>
-      
-      <div class="md:w-1/2 flex justify-center mb-10">
-        <img src="{%static 'images/2.png' %}" alt="Profile Picture" 
-             class="w-64 h-64 sm:w-80 sm:h-80 rounded-full" width="32" height="32">
-      </div>
-    </section>
+  <div class="md:w-1/2">
+    <h1 class="text-3xl sm:text-4xl md:text-5xl font-semibold text-black mb-3">
+      {% if request.LANGUAGE_CODE == 'es' %}Hola, soy Alejandro Cuevas González{% else %}Hi, I'm Alejandro Cuevas González{% endif %}
+    </h1>
+    <p class="text-lg sm:text-xl md:text-2xl font-medium text-gray-700 mb-3">
+      Full Stack Developer — Python/Django · React
+    </p>
+    <p class="text-base sm:text-lg text-gray-600 mb-6">
+      {% if request.LANGUAGE_CODE == 'es' %}
+        Full stack con especialización backend: diseño APIs en Django/DRF y construyo las interfaces
+        React que las consumen. Fundador y responsable técnico (CTO) de PatinPay, que llevé de cero a
+        producción. Ingeniero Industrial de formación, con pensamiento analítico y orientación a procesos.
+      {% else %}
+        Full stack with a backend focus: I design APIs in Django/DRF and build the React interfaces that
+        consume them. Founder and technical lead (CTO) of PatinPay, which I took from zero to production.
+        Industrial Engineer by training, with analytical thinking and a process-oriented mindset.
+      {% endif %}
+    </p>
+    <div class="flex flex-wrap gap-4">
+      <a href="{% url 'resume' %}"
+         class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-5 rounded-full transition">
+        {% if request.LANGUAGE_CODE == 'es' %}Ver currículum{% else %}View resume{% endif %}
+      </a>
+      <a href="{% static 'cv/CV_Alejandro_Cuevas_Gonzalez.pdf' %}" download
+         class="inline-flex items-center gap-2 bg-white hover:bg-gray-100 text-gray-800 font-semibold
+                py-2 px-5 rounded-full border border-gray-300 transition">
+        <i class="fas fa-download"></i>
+        {% if request.LANGUAGE_CODE == 'es' %}Descargar CV{% else %}Download CV{% endif %}
+      </a>
+    </div>
+  </div>
 
-    </body>
+  <div class="md:w-1/2 flex justify-center">
+    <img src="{% static 'images/2.png' %}" alt="Alejandro Cuevas González"
+         class="w-64 h-64 sm:w-80 sm:h-80 rounded-full">
+  </div>
+</section>
 
-</html>
-
-<footer id="footer-element" class="footer-container px-6 sm:px-10 md:px-16 py-6 text-center">
+<footer class="bg-gray-100 px-6 sm:px-10 md:px-16 py-6 text-center">
   <p class="text-gray-700 text-sm">
-    © 2025 Alejandro Cuevas González | {% if request.LANGUAGE_CODE == 'es' %}Desarrollador Backend{% else %}Backend Developer{% endif %} | Designed by @alejcuevas97
+    © 2026 Alejandro Cuevas González | Full Stack Developer | Trinidad, Cuba
   </p>
 </footer>
 {% endblock content %}

@@ -1,32 +1,39 @@
 from rest_framework import serializers
+
+from certificado.models import Certification
 from porfolio.models import Project
 
 
-# === Principio S (Single Responsibility) ===
-# Serializador específico para listar proyectos
-class ProjectListSerializer(serializers.ModelSerializer):
-    """Serializador para listar proyectos - vista de lectura"""
+class ProjectSerializer(serializers.ModelSerializer):
+    """Serializa proyectos del portafolio."""
+
+    image = serializers.SerializerMethodField()
+
     class Meta:
         model = Project
-        fields = ['id', 'title', 'descriptions', 'image', 'link', 'created']
-        read_only_fields = ['id', 'created']
+        fields = ["id", "title", "descriptions", "image", "link", "created", "update"]
+        read_only_fields = ["id", "created", "update"]
+
+    def get_image(self, obj):
+        if not obj.image:
+            return None
+        try:
+            return obj.image.url
+        except Exception:
+            return str(obj.image)
 
 
-# === Principio S (Single Responsibility) ===
-# Serializador específico para crear/actualizar proyectos
-class ProjectDetailSerializer(serializers.ModelSerializer):
-    """Serializador para detalle y operaciones CRUD"""
+class CertificationSerializer(serializers.ModelSerializer):
+    """Serializa certificaciones."""
+
     class Meta:
-        model = Project
-        fields = '__all__'
-        read_only_fields = ['created', 'update']
-
-
-# === Compatibilidad hacia atrás ===
-class PortafolioSerializers(ProjectDetailSerializer):
-    """DEPRECADA - usa ProjectDetailSerializer en su lugar"""
-    pass
-
-
-# Nombre antiguo en minúscula (DEPRECADO)
-portafolioSerializers = PortafolioSerializers
+        model = Certification
+        fields = [
+            "id",
+            "title",
+            "issuer",
+            "issued_date",
+            "description",
+            "credential_url",
+            "order",
+        ]
