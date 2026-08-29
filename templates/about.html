@@ -2,6 +2,7 @@
 {% load static i18n %}
 
 {% block title %}{% if request.LANGUAGE_CODE == 'es' %}Sobre mí{% else %}About{% endif %} — Alejandro Cuevas{% endblock title %}
+{% block meta_description %}{% if request.LANGUAGE_CODE == 'es' %}Especialización backend y capacidades full stack: APIs en Python (Django/DRF, FastAPI), React/JavaScript, bases de datos relacionales y despliegues en la nube.{% else %}Backend specialist and full stack capable: Python APIs (Django/DRF, FastAPI), React/JavaScript, relational databases and cloud deployments.{% endif %}{% endblock meta_description %}
 
 {% block content %}
 <div class="page">
@@ -33,7 +34,7 @@
       </div>
       <dl class="defs" data-reveal-stagger>
         <div class="def"><dt>Backend</dt><dd>Python, Django, Django REST Framework, FastAPI, JWT/OAuth2, OpenAPI/Swagger</dd></div>
-        <div class="def"><dt>Frontend</dt><dd>React, React Router, Tailwind CSS, Vite, PWA, JavaScript</dd></div>
+        <div class="def"><dt>Frontend / JavaScript</dt><dd>JavaScript, React, React Router, Tailwind CSS, Vite, PWA, TypeScript (where applicable)</dd></div>
         <div class="def"><dt>{% if request.LANGUAGE_CODE == 'es' %}Bases de datos{% else %}Databases{% endif %}</dt><dd>PostgreSQL, MySQL</dd></div>
         <div class="def"><dt>{% if request.LANGUAGE_CODE == 'es' %}Herramientas{% else %}Tooling{% endif %}</dt><dd>Git, GitHub, Docker, GitHub Actions, Postman, Cloudflare</dd></div>
         <div class="def"><dt>{% if request.LANGUAGE_CODE == 'es' %}Integraciones{% else %}Integrations{% endif %}</dt><dd>{% if request.LANGUAGE_CODE == 'es' %}Pasarelas de pago y webhooks, streaming de video (LiveKit), OAuth de terceros{% else %}Payment gateways and webhooks, video streaming (LiveKit), third-party OAuth{% endif %}</dd></div>
@@ -78,9 +79,9 @@
             <span class="entry-date">2025 — {% if request.LANGUAGE_CODE == 'es' %}presente{% else %}present{% endif %}</span>
           </div>
           <ul>
-            <li>{% if request.LANGUAGE_CODE == 'es' %}Diseño y despliegue de APIs RESTful con Django y FastAPI para aplicaciones internas.{% else %}Design and deployment of RESTful APIs with Django and FastAPI for internal applications.{% endif %}</li>
-            <li>{% if request.LANGUAGE_CODE == 'es' %}Optimización de consultas y esquema de bases de datos (PostgreSQL, MySQL): −30 % en tiempo de respuesta de las consultas críticas.{% else %}Query and database-schema optimization (PostgreSQL, MySQL): −30% response time on critical queries.{% endif %}</li>
-            <li>{% if request.LANGUAGE_CODE == 'es' %}Automatización de la generación de informes: −40 % de horas manuales del equipo.{% else %}Report-generation automation: −40% of the team's manual hours.{% endif %}</li>
+            <li>{% if request.LANGUAGE_CODE == 'es' %}Diseño y despliegue de APIs RESTful con Django y FastAPI para clientes y productos comerciales (más de 10 proyectos entregados).{% else %}Design and deployment of RESTful APIs with Django and FastAPI for clients and commercial products (10+ projects delivered).{% endif %}</li>
+            <li>{% if request.LANGUAGE_CODE == 'es' %}Optimización de consultas y esquema de bases de datos (PostgreSQL, MySQL): reducción típica del 30% en tiempo de respuesta de consultas críticas tras refactorizaciones y nuevos índices.{% else %}Query and database-schema optimization (PostgreSQL, MySQL): typical 30% reduction in response time for critical queries after refactoring and new indexes.{% endif %}</li>
+            <li>{% if request.LANGUAGE_CODE == 'es' %}Automatización de la generación de informes y pipelines: reducción de hasta 40% en horas manuales del equipo y entrega mensual de reportes automatizados para stakeholders.{% else %}Report-generation automation and pipelines: up to 40% reduction in manual hours and monthly automated reports delivered to stakeholders.{% endif %}</li>
           </ul>
         </article>
 

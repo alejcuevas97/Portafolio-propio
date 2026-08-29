@@ -49,11 +49,24 @@ class ProjectService:
     @staticmethod
     def get_cached_projects():
         """
-        Obtiene proyectos de caché.
+        Obtiene proyectos desde caché en forma serializable (lista de dicts).
+        Evita almacenar instancias de modelos Django en el cache (pickling).
         """
         projects = cache.get(ProjectService.CACHE_KEY)
         if projects is None:
-            projects = list(ProjectService.get_all_projects())
+            qs = ProjectService.get_all_projects()
+            projects = [
+                {
+                    "id": p.id,
+                    "title": p.title,
+                    "descriptions": p.descriptions,
+                    "image": getattr(p, 'image_url', str(p.image) if p.image else ""),
+                    "link": p.link,
+                    "created": p.created,
+                    "update": p.update,
+                }
+                for p in qs
+            ]
             cache.set(ProjectService.CACHE_KEY, projects, ProjectService.CACHE_TIMEOUT)
         return projects
     

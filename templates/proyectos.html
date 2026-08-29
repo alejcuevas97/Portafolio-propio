@@ -2,6 +2,7 @@
 {% load static i18n %}
 
 {% block title %}{% if request.LANGUAGE_CODE == 'es' %}Proyectos{% else %}Projects{% endif %} — Alejandro Cuevas{% endblock title %}
+{% block meta_description %}{% if request.LANGUAGE_CODE == 'es' %}Listado de proyectos y trabajos: PatinPay, TIENDA-MEXICO y APIs de gestión. Desarrollo backend (Django) y front-end (React).{% else %}Portfolio of projects: PatinPay, TIENDA-MEXICO and management APIs. Backend (Django) and frontend (React) work.{% endif %}{% endblock meta_description %}
 
 {% block content %}
 <div class="page">
@@ -57,11 +58,24 @@
 
       {% if proyectos %}
         <div class="card-grid" data-reveal-stagger>
+          <a class="card project" href="https://patinpay-frontend.pages.dev" target="_blank" rel="noopener">
+            <div class="project-media">
+              <img src="https://res.cloudinary.com/dqijixzes/image/upload/v1787821130/dygiwu7rlpslc3p9da5r.jpg" alt="PatinPay – Plataforma de Gestión de Eventos Deportivos" loading="lazy">
+            </div>
+            <div class="project-body">
+              <h3>PatinPay – Plataforma de Gestión de Eventos Deportivos</h3>
+              <p>Plataforma SaaS de gestión de eventos: entradas, tienda, rifas, transmisiones en vivo y control de acceso por QR.</p>
+              <div class="project-foot">
+                <span>2026</span>
+                <span class="go">ver →</span>
+              </div>
+            </div>
+          </a>
           {% for proyecto in proyectos %}
             <a class="card project" href="{{ proyecto.link }}" target="_blank" rel="noopener">
               <div class="project-media">
                 {% if proyecto.image %}
-                  <img src="{{ proyecto.image.url }}" alt="{{ proyecto.title }}" loading="lazy">
+                  <img src="{{ proyecto.image_url }}" alt="{{ proyecto.title }}" loading="lazy">
                 {% else %}
                   <span class="noimg">no image</span>
                 {% endif %}
