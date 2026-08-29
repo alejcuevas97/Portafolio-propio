@@ -58,19 +58,6 @@
 
       {% if proyectos %}
         <div class="card-grid" data-reveal-stagger>
-          <a class="card project" href="https://patinpay-frontend.pages.dev" target="_blank" rel="noopener">
-            <div class="project-media">
-              <img src="https://res.cloudinary.com/dqijixzes/image/upload/v1787821130/dygiwu7rlpslc3p9da5r.jpg" alt="PatinPay – Plataforma de Gestión de Eventos Deportivos" loading="lazy">
-            </div>
-            <div class="project-body">
-              <h3>PatinPay – Plataforma de Gestión de Eventos Deportivos</h3>
-              <p>Plataforma SaaS de gestión de eventos: entradas, tienda, rifas, transmisiones en vivo y control de acceso por QR.</p>
-              <div class="project-foot">
-                <span>2026</span>
-                <span class="go">ver →</span>
-              </div>
-            </div>
-          </a>
           {% for proyecto in proyectos %}
             <a class="card project" href="{{ proyecto.link }}" target="_blank" rel="noopener">
               <div class="project-media">
