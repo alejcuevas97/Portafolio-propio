@@ -77,6 +77,16 @@ class Project(models.Model):
         from datetime import timedelta
         return self.created >= now() - timedelta(days=days)
     
+    @property
+    def image_url(self):
+        """Retorna una URL segura para la imagen (evita levantar excepción si Cloudinary no está configurado)."""
+        if not self.image:
+            return ""
+        try:
+            return self.image.url
+        except Exception:
+            return str(self.image)
+    
     def save(self, *args, **kwargs):
         """Valida antes de guardar"""
         ProjectValidator.validate_title(self.title)

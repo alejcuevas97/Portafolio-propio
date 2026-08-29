@@ -61,7 +61,7 @@
             <a class="card project" href="{{ proyecto.link }}" target="_blank" rel="noopener">
               <div class="project-media">
                 {% if proyecto.image %}
-                  <img src="{{ proyecto.image.url }}" alt="{{ proyecto.title }}" loading="lazy">
+                  <img src="{{ proyecto.image_url }}" alt="{{ proyecto.title }}" loading="lazy">
                 {% else %}
                   <span class="noimg">no image</span>
                 {% endif %}
