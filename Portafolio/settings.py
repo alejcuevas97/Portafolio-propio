@@ -27,11 +27,25 @@ for _env_file in (BASE_DIR / ".env", Path(__file__).resolve().parent / ".env"):
 SECRET_KEY = env("SECRET_KEY", default="django-insecure-change-me")
 DEBUG = env.bool("DEBUG", default=True)
 ALLOWED_HOSTS = env.list(
-    "ALLOWED_HOSTS", default=["localhost", "127.0.0.1", ".onrender.com"]
+    "ALLOWED_HOSTS",
+    default=[
+        "localhost",
+        "127.0.0.1",
+        ".up.railway.app",
+        "alejandrocuevas.dev",
+        "www.alejandrocuevas.dev",
+    ]
 )
+
 CSRF_TRUSTED_ORIGINS = env.list(
-    "CSRF_TRUSTED_ORIGINS", default=["https://*.onrender.com"]
+    "CSRF_TRUSTED_ORIGINS",
+    default=[
+        "https://*.up.railway.app",
+        "https://alejandrocuevas.dev",
+        "https://www.alejandrocuevas.dev",
+    ]
 )
+
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 ROOT_URLCONF = "Portafolio.urls"
