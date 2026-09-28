@@ -2,7 +2,7 @@
 {% load static i18n %}
 
 {% block title %}{% if request.LANGUAGE_CODE == 'es' %}Proyectos{% else %}Projects{% endif %} — Alejandro Cuevas{% endblock title %}
-{% block meta_description %}{% if request.LANGUAGE_CODE == 'es' %}Listado de proyectos y trabajos: PatinPay, TIENDA-MEXICO y APIs de gestión. Desarrollo backend (Django) y front-end (React).{% else %}Portfolio of projects: PatinPay, TIENDA-MEXICO and management APIs. Backend (Django) and frontend (React) work.{% endif %}{% endblock meta_description %}
+{% block meta_description %}{% if request.LANGUAGE_CODE == 'es' %}Listado de proyectos y trabajos backend: PatinPay, TIENDA-MEXICO y APIs de gestión con Django, DRF y lógica de negocio.{% else %}Backend project portfolio: PatinPay, TIENDA-MEXICO and management APIs built with Django, DRF and business logic.{% endif %}{% endblock meta_description %}
 
 {% block content %}
 <div class="page">
@@ -15,11 +15,11 @@
       </h1>
       <p class="lede" style="margin-top:1rem;max-width:50ch">
         {% if request.LANGUAGE_CODE == 'es' %}
-          Del diseño de la API al despliegue en producción. Los proyectos con imagen se gestionan
-          desde el panel de administración.
+          Del diseño de la API a la lógica de negocio y su despliegue en producción. Los proyectos
+          con imagen se gestionan desde el panel de administración.
         {% else %}
-          From API design to production deployment. Projects with an image are managed from the
-          admin panel.
+          From API design to business logic and production deployment. Projects with an image are
+          managed from the admin panel.
         {% endif %}
       </p>
     </section>
@@ -30,14 +30,14 @@
         <h2 style="font-size:var(--step-2)">PatinPay <span class="mono" style="color:var(--accent)">· patinpay-frontend.pages.dev</span></h2>
         <p class="muted" style="margin-top:.55rem;max-width:62ch">
           {% if request.LANGUAGE_CODE == 'es' %}
-            Plataforma SaaS full stack de gestión de eventos que diseñé y desarrollé en solitario:
+            Plataforma SaaS backend-first de gestión de eventos que diseñé y desarrollé en solitario:
             entradas, tienda, rifas, transmisiones en vivo y control de acceso por QR. Backend Django
-            REST Framework (~70 endpoints, JWT con roles), frontend React/Vite/PWA, pagos con Transbank
-            Webpay y video con LiveKit.
+            REST Framework (~70 endpoints, JWT con roles), integración con pagos Transbank Webpay y
+            video con LiveKit.
           {% else %}
-            Full stack event-management SaaS I designed and built solo: ticketing, store, raffles, live
-            streaming and QR access control. Django REST Framework backend (~70 endpoints, role-based
-            JWT), React/Vite/PWA frontend, Transbank Webpay payments and LiveKit video.
+            Backend-first event-management SaaS I designed and built solo: ticketing, store, raffles,
+            live streaming and QR access control. Django REST Framework backend (~70 endpoints,
+            role-based JWT), Transbank Webpay payments and LiveKit video integration.
           {% endif %}
         </p>
         <div class="tags" style="margin-top:1rem">

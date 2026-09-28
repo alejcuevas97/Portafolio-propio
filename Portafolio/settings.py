@@ -28,17 +28,18 @@ SECRET_KEY = env("SECRET_KEY", default="django-insecure-change-me")
 DEBUG = env.bool("DEBUG", default=True)
 DEFAULT_HOSTS = ["localhost", "127.0.0.1", ".railway.app", ".up.railway.app"]
 
-ALLOWED_HOSTS = env.list(
-    "ALLOWED_HOSTS",
-    default=DEFAULT_HOSTS,
-)
+_env_allowed_hosts = env.list("ALLOWED_HOSTS", default=[])
+ALLOWED_HOSTS = list(dict.fromkeys(DEFAULT_HOSTS + _env_allowed_hosts))
 
-CSRF_TRUSTED_ORIGINS = env.list(
-    "CSRF_TRUSTED_ORIGINS",
-    default=[
-        "https://*.railway.app",
-        "https://*.up.railway.app",
-    ],
+_env_csrf_origins = env.list("CSRF_TRUSTED_ORIGINS", default=[])
+CSRF_TRUSTED_ORIGINS = list(
+    dict.fromkeys(
+        [
+            "https://*.railway.app",
+            "https://*.up.railway.app",
+            * _env_csrf_origins,
+        ]
+    )
 )
 
 

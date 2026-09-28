@@ -2,7 +2,7 @@
 {% load static i18n %}
 
 {% block title %}{% if request.LANGUAGE_CODE == 'es' %}Sobre mí{% else %}About{% endif %} — Alejandro Cuevas{% endblock title %}
-{% block meta_description %}{% if request.LANGUAGE_CODE == 'es' %}Especialización backend y capacidades full stack: APIs en Python (Django/DRF, FastAPI), React/JavaScript, bases de datos relacionales y despliegues en la nube.{% else %}Backend specialist and full stack capable: Python APIs (Django/DRF, FastAPI), React/JavaScript, relational databases and cloud deployments.{% endif %}{% endblock meta_description %}
+{% block meta_description %}{% if request.LANGUAGE_CODE == 'es' %}Especialización backend: APIs con Python y Django, diseño de servicios, bases de datos relacionales, seguridad, autenticación y despliegues en la nube.{% else %}Backend specialist: Python and Django APIs, service design, relational databases, auth, security and cloud deployments.{% endif %}{% endblock meta_description %}
 
 {% block content %}
 <div class="page">
@@ -11,15 +11,17 @@
     <section>
       <span class="eyebrow">{% if request.LANGUAGE_CODE == 'es' %}Sobre mí{% else %}About{% endif %}</span>
       <h1 style="font-size:var(--step-3);margin-top:1rem">
-        {% if request.LANGUAGE_CODE == 'es' %}Especialización backend, capacidad full stack.{% else %}Backend specialist, full stack capable.{% endif %}
+        {% if request.LANGUAGE_CODE == 'es' %}Backend con experiencia full stack y enfoque en producto.{% else %}Backend with full stack experience and product focus.{% endif %}
       </h1>
       <p class="lede" style="margin-top:1rem;max-width:50ch">
         {% if request.LANGUAGE_CODE == 'es' %}
-          Mi profundidad está en el backend: diseño de APIs, modelado de datos e integraciones.
-          El frontend lo llevo hasta producción.
+          Mi profundidad está en el backend: diseño de APIs, modelado de datos, autenticación,
+          seguridad, integraciones y entregas listas para producción. También tengo experiencia
+          full stack con React y JavaScript para cerrar la solución completa.
         {% else %}
-          My depth is in the backend: API design, data modeling and integrations. I take the
-          frontend all the way to production.
+          My depth is in the backend: API design, data modeling, authentication, security,
+          integrations and production-ready delivery. I also have full stack experience with React
+          and JavaScript to complete the end-to-end solution.
         {% endif %}
       </p>
       <div class="actions" style="margin-top:1.5rem">

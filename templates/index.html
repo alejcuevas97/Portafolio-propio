@@ -1,24 +1,26 @@
 {% extends 'base.html' %}
 {% load static i18n %}
 
-{% block title %}Alejandro Cuevas — Full Stack Developer{% endblock title %}
+{% block title %}Alejandro Cuevas — Backend Developer{% endblock title %}
 
 {% block content %}
 <section class="hero">
   <div class="wrap">
     <span class="eyebrow rise">
-      Full Stack Developer · Trinidad, Cuba
+      Backend Developer · Full Stack Experience · Trinidad, Cuba
     </span>
     <h1 class="rise rise-2">
-      {% if request.LANGUAGE_CODE == 'es' %}Diseño la API y también la interfaz que la consume.{% else %}I design the API and the interface that consumes it.{% endif %}
+      {% if request.LANGUAGE_CODE == 'es' %}Construyo la lógica que hace funcionar la app y la experiencia que la rodea.{% else %}I build the backend logic and the experience around it.{% endif %}
     </h1>
     <p class="lede rise rise-3">
       {% if request.LANGUAGE_CODE == 'es' %}
-        Especialización backend con Python y Django. Creador de PatinPay, una plataforma SaaS
-        que desarrollé de cero a producción. Disponible para remoto, freelance o contrato.
+        Especializado en backend con Python, Django y Django REST Framework, con experiencia full stack
+        en React, JavaScript y despliegues reales en producción. Diseño APIs REST, autenticación,
+        lógica de negocio y servicios que cumplen en producción para clientes, startups y proyectos propios.
       {% else %}
-        Backend focus with Python and Django. Creator of PatinPay, a SaaS platform I built
-        from zero to production. Available for remote, freelance or contract.
+        Specialized in backend development with Python, Django and Django REST Framework, with full stack
+        experience in React, JavaScript and real-world production deployments. I design REST APIs,
+        auth flows, business logic and services that perform in production for clients, startups and personal projects.
       {% endif %}
     </p>
     <div class="actions rise rise-4">
