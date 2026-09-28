@@ -26,16 +26,19 @@ for _env_file in (BASE_DIR / ".env", Path(__file__).resolve().parent / ".env"):
 
 SECRET_KEY = env("SECRET_KEY", default="django-insecure-change-me")
 DEBUG = env.bool("DEBUG", default=True)
-DEFAULT_HOSTS = ["localhost", "127.0.0.1"]
+DEFAULT_HOSTS = ["localhost", "127.0.0.1", ".railway.app", ".up.railway.app"]
 
-ALLOWED_HOSTS = DEFAULT_HOSTS + env.list(
+ALLOWED_HOSTS = env.list(
     "ALLOWED_HOSTS",
-    default=[".up.railway.app"]
+    default=DEFAULT_HOSTS,
 )
 
 CSRF_TRUSTED_ORIGINS = env.list(
     "CSRF_TRUSTED_ORIGINS",
-    default=["https://*.up.railway.app"]
+    default=[
+        "https://*.railway.app",
+        "https://*.up.railway.app",
+    ],
 )
 
 
